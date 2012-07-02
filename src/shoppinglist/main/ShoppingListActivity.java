@@ -3,6 +3,7 @@ package shoppinglist.main;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class ShoppingListActivity extends ListActivity {
@@ -15,9 +16,14 @@ public class ShoppingListActivity extends ListActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO 自動生成されたメソッド・スタブ
+		// 
+		MenuInflater mi = getMenuInflater();
+		mi.inflate(R.menu.listmenu, menu);
+
+		
+		
 		return super.onCreateOptionsMenu(menu);
-	}
+	}//public boolean onCreateOptionsMenu(Menu menu)
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

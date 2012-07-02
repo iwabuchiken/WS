@@ -1,5 +1,8 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
+<attribute_registry FONT_SIZE="24">
+<attribute_name NAME="version" VISIBLE="true"/>
+</attribute_registry>
 <node CREATED="1341225610390" ID="ID_448611909" MODIFIED="1341225614000" TEXT="ShoppingList">
 <node CREATED="1341225630906" ID="ID_1385933707" MODIFIED="1341225644859" POSITION="right" TEXT="LOG">
 <node CREATED="1341225645765" ID="ID_666287958" MODIFIED="1341225897500" TEXT="shoppinglist.xml">
@@ -14,7 +17,8 @@
 </node>
 </node>
 </node>
-<node CREATED="1341225858859" ID="ID_678144722" MODIFIED="1341225878015" TEXT="ShoppingListActivity.java">
+<node CREATED="1341225858859" ID="ID_678144722" MODIFIED="1341232389312" TEXT="ShoppingListActivity.java">
+<icon BUILTIN="button_ok"/>
 <node CREATED="1341225878875" ID="ID_590205232" MODIFIED="1341225901375" TEXT="content view">
 <icon BUILTIN="button_ok"/>
 </node>
@@ -22,7 +26,100 @@
 <icon BUILTIN="button_ok"/>
 </node>
 </node>
-<node CREATED="1341232349781" ID="ID_1948487267" MODIFIED="1341232383750" TEXT="COMMIT"/>
+<node CREATED="1341232349781" ID="ID_1948487267" MODIFIED="1341232430531" TEXT="COMMIT">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341232432312" ID="ID_343371954" MODIFIED="1341233985593" TEXT="master =&gt; Option menues">
+<attribute_layout NAME_WIDTH="124" VALUE_WIDTH="30"/>
+<attribute NAME="Version" VALUE="1"/>
+<attribute NAME="Dispatch" VALUE="2"/>
+<node CREATED="1341232983625" ID="ID_611281235" MODIFIED="1341233002359" TEXT="Menu 1">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341232447343" ID="ID_1708671753" MODIFIED="1341232559093" TEXT="strings.xml">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341232451593" ID="ID_1731645609" MODIFIED="1341232559093" TEXT="=v1_menu_1 / Option 1">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node CREATED="1341232562468" ID="ID_1488393444" MODIFIED="1341232766687" TEXT="listmenu.xml">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341232620453" ID="ID_400780630" MODIFIED="1341232762750" TEXT="Menu 1">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341232595812" ID="ID_1906546852" MODIFIED="1341232762750" TEXT="id=v1_menu_1">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341232631125" ID="ID_1954718288" MODIFIED="1341233455500" TEXT="title=">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341232655546" ID="ID_37565498" MODIFIED="1341232762750" TEXT="icon=android:drawable/ic_menu_set_as">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+</node>
+<node CREATED="1341232869015" ID="ID_1952350952" MODIFIED="1341232979203" TEXT="Set menu =&gt; Inflate">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341232769890" ID="ID_1339095046" MODIFIED="1341232979203" TEXT="INSTALL">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341233256328" ID="ID_1808095613" MODIFIED="1341233280265" TEXT="Validate">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341233264453" ID="ID_918649440" MODIFIED="1341233280265" TEXT="Shown as intended">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+</node>
+<node CREATED="1341233131703" ID="ID_1923419410" MODIFIED="1341233845906" TEXT="Menu 2">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341232447343" ID="ID_91804616" MODIFIED="1341233142875" TEXT="strings.xml">
+<node CREATED="1341233173765" ID="ID_1091804563" MODIFIED="1341233354812" TEXT="item 1">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341233179015" ID="ID_299852922" MODIFIED="1341233354812" TEXT="name">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341233191062" ID="ID_1675893196" MODIFIED="1341233354812" TEXT="=v1_menu_register_item">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node CREATED="1341233182437" ID="ID_741852616" MODIFIED="1341233354812" TEXT="value">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341233207078" ID="ID_1098171707" MODIFIED="1341233354812" TEXT="=&#x54c1;&#x7269;&#x767b;&#x9332;">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1341232562468" ID="ID_1349805203" MODIFIED="1341233664953" TEXT="listmenu.xml">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341232595812" ID="ID_1522342846" MODIFIED="1341233664953" TEXT="id=v1_menu_register_item">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341232631125" ID="ID_326450325" MODIFIED="1341233664953" TEXT="title=@string/v1_menu_register_item">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341232655546" ID="ID_1235686262" MODIFIED="1341233664953" TEXT="icon=android:drawable/ic_menu_set_as">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node CREATED="1341232769890" ID="ID_180359949" MODIFIED="1341233845906" TEXT="INSTALL">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1341233256328" ID="ID_1061658455" MODIFIED="1341233845906" TEXT="Validate">
+<icon BUILTIN="button_ok"/>
+<node CREATED="1341233264453" ID="ID_22886958" MODIFIED="1341233845906" TEXT="Shown as intended">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node CREATED="1341233928468" ID="ID_108092203" MODIFIED="1341233930359" TEXT="COMMIT"/>
+</node>
+</node>
+</node>
+<node CREATED="1341233034937" ID="ID_1494410536" MODIFIED="1341233040562" POSITION="left" TEXT="Class">
+<node CREATED="1341233043546" ID="ID_139854400" MODIFIED="1341233117593" TEXT="ShoppingItem.java">
+<node CREATED="1341233049437" ID="ID_1283747708" MODIFIED="1341233057156" TEXT="store: String"/>
+<node CREATED="1341233059015" ID="ID_832785698" MODIFIED="1341233064750" TEXT="name: String"/>
+<node CREATED="1341233069906" ID="ID_1174760443" MODIFIED="1341233075375" TEXT="price: int"/>
+<node CREATED="1341233098281" ID="ID_1391631543" MODIFIED="1341233101156" TEXT="genre: String"/>
+</node>
 </node>
 </node>
 </map>

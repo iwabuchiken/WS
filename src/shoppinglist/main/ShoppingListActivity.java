@@ -1,6 +1,7 @@
 package shoppinglist.main;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,6 +29,21 @@ public class ShoppingListActivity extends ListActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO 自動生成されたメソッド・スタブ
+		switch (item.getItemId()) {
+		case R.id.v1_menu_add_item:
+			//
+			Intent i = new Intent();
+			
+			//
+			i.setClass(this, RegisterItem.class);
+			
+			//
+			startActivity(i);
+			
+			break;
+		
+		}//switch (item.getItemId())
+		
 		return super.onOptionsItemSelected(item);
 	}
 

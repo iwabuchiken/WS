@@ -1,0 +1,8 @@
+copy ..\ImageFileManager6\.gitignore .
+
+g init
+g a .
+
+a
+cd C:\WORKS\WORKSPACES_ANDROID\ShoppingList
+gitk

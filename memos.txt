@@ -6,3 +6,6 @@ g a .
 a
 cd C:\WORKS\WORKSPACES_ANDROID\ShoppingList
 gitk
+
+C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\ShoppingList.mm
+C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\Activity_log.mm

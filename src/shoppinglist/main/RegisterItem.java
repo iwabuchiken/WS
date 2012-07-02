@@ -1,6 +1,7 @@
 package shoppinglist.main;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ public class RegisterItem extends Activity {
 		 * Steps
 		 * 1. Super
 		 * 2. Set content
+		 * 3. DBManager
 			----------------------------*/
 		
 		super.onCreate(savedInstanceState);
@@ -21,6 +23,15 @@ public class RegisterItem extends Activity {
 		 * 2. Set content
 			----------------------------*/
 		setContentView(R.layout.registeritem);
+		
+		/*----------------------------
+		 * 3. DBManager
+			----------------------------*/
+		DBManager dbm = new DBManager(this);
+		
+		SQLiteDatabase db = dbm.getWritableDatabase();
+		
+		boolean result = dbm.createTable(db, DBManager.tableName);
 		
 	}//public void onCreate(Bundle savedInstanceState)
 

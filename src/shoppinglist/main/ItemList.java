@@ -22,6 +22,7 @@ public class ItemList extends ListActivity {
 		 * 1. Super
 		 * 2. Set content
 		 * 3. Prepare data => List<ShoppingItem>
+		 * 4. Set up adapter
 		----------------------------*/
 		super.onCreate(savedInstanceState);
 
@@ -44,7 +45,8 @@ public class ItemList extends ListActivity {
 		
 		Cursor c = db.query(
 										DBManager.tableName, 
-										DBManager.columns, 
+//										DBManager.columns,
+										DBManager.columns_with_index,
 										null, null, null, null, null);
 		
 		//
@@ -54,12 +56,45 @@ public class ItemList extends ListActivity {
 			// Log
 			Log.d("ItemList.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "message" + c.getShort(0));
+					+ "]", "c.getString(0) => " + c.getString(0));
+			Log.d("ItemList.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c.getString(1) => " + c.getString(1));
+			Log.d("ItemList.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c.getString(4) => " + c.getString(4));
+			
+			//
+			ShoppingItem item = new ShoppingItem(
+									c.getString(0),
+									c.getString(1),
+									c.getInt(2),
+									c.getString(3)
+									);
+			
+			//
+			list.add(item);
+			
+			//
+			c.moveToNext();
 			
 		}//for (int i = 0; i < c.getCount(); i++)
 		
 		//
 		db.close();
+		
+		/*----------------------------
+		 * 4. Set up adapter
+			----------------------------*/
+		//
+		ItemListAdapter adapter = new ItemListAdapter(
+							this,
+							R.layout.adapteritem,
+							list
+							);
+		
+		//
+		setListAdapter(adapter);
 		
 	}//public void onCreate(Bundle savedInstanceState)
 

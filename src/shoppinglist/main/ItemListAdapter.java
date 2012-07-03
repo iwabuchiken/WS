@@ -27,6 +27,14 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		/*----------------------------
+		 * Steps
+		 * 1. Inflate
+		 * 2. Get views
+		 * 3. Get item
+		 * 4. Set values
+			----------------------------*/
+		
 		// TODO 自動生成されたメソッド・スタブ
 		
         if (convertView == null) {
@@ -36,7 +44,7 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
 
         //
         TextView tv_item_name = 
-        				(TextView) convertView.findViewById(R.id.adapteritem_LL_item_name);
+        				(TextView) convertView.findViewById(R.id.adapteritem_tv_item_name);
         TextView tv_store = 
 				(TextView) convertView.findViewById(R.id.adapteritem_tv_store);
         TextView tv_price = 
@@ -50,8 +58,18 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "si.getName() => " + si.getName());
 		
+		/*----------------------------
+		 * 4. Set values
+			----------------------------*/
+		//
+		tv_item_name.setText(si.getName());
+		tv_store.setText(si.getStore());
+//		tv_price.setText(si.getPrice());
+		tv_price.setText(String.valueOf(si.getPrice()));
 		
-		return super.getView(position, convertView, parent);
+		
+		return convertView;
+//		return super.getView(position, convertView, parent);
 	}//public View getView(int position, View convertView, ViewGroup parent)
 
 }//public class ItemListAdapter extends ArrayAdapter<ShoppingItem>

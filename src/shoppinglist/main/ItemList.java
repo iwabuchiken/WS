@@ -66,10 +66,10 @@ public class ItemList extends ListActivity {
 			
 			//
 			ShoppingItem item = new ShoppingItem(
-									c.getString(0),
-									c.getString(1),
-									c.getInt(2),
-									c.getString(3)
+									c.getString(0),		// store
+									c.getString(1),		// name
+									c.getInt(2),			// price
+									c.getString(3)		// genre
 									);
 			
 			//

@@ -49,6 +49,8 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
 				(TextView) convertView.findViewById(R.id.adapteritem_tv_store);
         TextView tv_price = 
 				(TextView) convertView.findViewById(R.id.adapteritem_tv_price);
+        TextView tv_genre = 
+				(TextView) convertView.findViewById(R.id.adapteritem_tv_genre);
 
         //
         ShoppingItem si = (ShoppingItem) getItem(position);
@@ -67,6 +69,7 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
 //		tv_price.setText(si.getPrice());
 		tv_price.setText(String.valueOf(si.getPrice()));
 		
+		tv_genre.setText("(" + si.getGenre() + ")");
 		
 		return convertView;
 //		return super.getView(position, convertView, parent);

@@ -13,6 +13,9 @@ public final class R {
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int icon_shopping_list=0x7f020001;
+        public static final int v1_menu_item_list=0x7f020002;
+        public static final int v1_menu_item_list_30x30=0x7f020003;
+        public static final int v1_menu_item_list_50x50=0x7f020004;
     }
     public static final class id {
         public static final int v1_LL_genre=0x7f060009;
@@ -27,6 +30,7 @@ public final class R {
         public static final int v1_et_store=0x7f060002;
         public static final int v1_menu_1=0x7f06000e;
         public static final int v1_menu_add_item=0x7f06000f;
+        public static final int v1_menu_item_list=0x7f060010;
         public static final int v1_tv_genre=0x7f06000a;
         public static final int v1_tv_name=0x7f060004;
         public static final int v1_tv_price=0x7f060007;
@@ -44,6 +48,7 @@ public final class R {
         public static final int hello=0x7f040000;
         public static final int v1_btn_register=0x7f040008;
         public static final int v1_menu_1=0x7f040002;
+        public static final int v1_menu_item_list=0x7f040009;
         public static final int v1_menu_register_item=0x7f040003;
         public static final int v1_tv_genre=0x7f040007;
         public static final int v1_tv_item=0x7f040004;

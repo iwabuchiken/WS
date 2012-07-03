@@ -10,5 +10,6 @@
     <string name="v1_tv_price">価格</string>
     <string name="v1_tv_genre">ジャンル</string>
     <string name="v1_btn_register">登録</string>
+    <string name="v1_menu_item_list">品物リスト</string>
 
 </resources>

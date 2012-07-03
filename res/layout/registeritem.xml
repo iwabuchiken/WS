@@ -31,14 +31,14 @@
         android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/v1_tv_item"
+            android:id="@+id/v1_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/v1_tv_item"
             android:textSize="25dp" />
 
         <EditText
-            android:id="@+id/v1_et_item"
+            android:id="@+id/v1_et_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -90,10 +90,10 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:id="@+id/v1_btn_register" android:layout_gravity="center_horizontal">
+        android:layout_height="wrap_content" android:id="@+id/v1_LL_register" android:layout_gravity="center_horizontal">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/v1_btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/v1_btn_register" android:textSize="25dp"/>

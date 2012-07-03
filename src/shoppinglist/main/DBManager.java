@@ -1,6 +1,7 @@
 package shoppinglist.main;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -24,6 +25,8 @@ public class DBManager extends SQLiteOpenHelper {
 	
 	//
 	static String tableName = "shopping_item";
+
+	static String[] columns = {"store", "name", "price", "genre"};
 	
 	public DBManager(Context context) {
 		super(context, name, factory, version);
@@ -71,7 +74,8 @@ public class DBManager extends SQLiteOpenHelper {
 
 	public boolean createTable(SQLiteDatabase db, String tableName) {
 		//
-		if (!tableExists(db, tableName)) {
+//		if (!tableExists(db, tableName)) {
+		if (tableExists(db, tableName)) {
 			// Log
 			Log.d("DBManager.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
@@ -107,4 +111,39 @@ public class DBManager extends SQLiteOpenHelper {
 		}//try
 		
 	}//public boolean createTable(SQLiteDatabase db, String tableName)
+
+	public boolean storeData(SQLiteDatabase db, String tableName, String[] cols, String[] values) {
+		try {
+			//
+			db.beginTransaction();
+			
+			//
+			ContentValues cv = new ContentValues();
+			
+			// Put values
+			for (int i = 0; i < cols.length; i++) {
+				cv.put(cols[i], values[i]);
+			}//for (int i = 0; i < columnNames.length; i++)
+
+			// Insert data
+			db.insert(tableName, null, cv);
+			
+			// Set as successful
+			db.setTransactionSuccessful();
+
+			// End transaction
+			db.endTransaction();
+			
+			return true;
+			
+		} catch (Exception e) {
+			// Log
+			Log.d("DBUtils.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Exception => " + e.toString());
+			
+			return false;
+		}//try
+		
+	}//public boolean storeData(SQLiteDatabase db, String tableName, String[] cols, String[] values)
 }

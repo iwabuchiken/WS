@@ -1,7 +1,14 @@
 package shoppinglist.main;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import android.app.ListActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -14,6 +21,7 @@ public class ItemList extends ListActivity {
 		 * Steps
 		 * 1. Super
 		 * 2. Set content
+		 * 3. Prepare data => List<ShoppingItem>
 		----------------------------*/
 		super.onCreate(savedInstanceState);
 
@@ -22,6 +30,36 @@ public class ItemList extends ListActivity {
 
 		// debug
 		Toast.makeText(ItemList.this, "ItemList => Started", 2000).show();
+		
+		/*----------------------------
+		 * 3. Prepare data => List<ShoppingItem>
+			----------------------------*/
+		//
+		List<ShoppingItem> list = new ArrayList<ShoppingItem>();
+		
+		//
+		DBManager dbm = new DBManager(this);
+		
+		SQLiteDatabase db = dbm.getReadableDatabase();
+		
+		Cursor c = db.query(
+										DBManager.tableName, 
+										DBManager.columns, 
+										null, null, null, null, null);
+		
+		//
+		c.moveToFirst();
+		
+		for (int i = 0; i < c.getCount(); i++) {
+			// Log
+			Log.d("ItemList.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "message" + c.getShort(0));
+			
+		}//for (int i = 0; i < c.getCount(); i++)
+		
+		//
+		db.close();
 		
 	}//public void onCreate(Bundle savedInstanceState)
 

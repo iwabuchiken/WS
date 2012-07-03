@@ -11,5 +11,9 @@
     <string name="v1_tv_genre">ジャンル</string>
     <string name="v1_btn_register">登録</string>
     <string name="v1_menu_item_list">品物リスト</string>
-
+    
+    <string name="adapteritem_tv_item_name">品物リスト</string>
+    <string name="adapteritem_tv_store">品物リスト</string>
+    <string name="adapteritem_tv_price">品物リスト</string>
+    
 </resources>

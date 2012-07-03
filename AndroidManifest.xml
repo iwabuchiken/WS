@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterItem"></activity>
+        <activity android:name=".ItemList"></activity>
     </application>
 
 </manifest>

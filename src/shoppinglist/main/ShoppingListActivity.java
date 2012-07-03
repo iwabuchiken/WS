@@ -30,18 +30,25 @@ public class ShoppingListActivity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO 自動生成されたメソッド・スタブ
 		switch (item.getItemId()) {
-		case R.id.v1_menu_add_item:
-			//
-			Intent i = new Intent();
+			case R.id.v1_menu_add_item:
+				//
+				Intent i = new Intent();
+				
+				//
+				i.setClass(this, RegisterItem.class);
+				
+				//
+				startActivity(i);
+				
+				break;
 			
-			//
-			i.setClass(this, RegisterItem.class);
-			
-			//
-			startActivity(i);
-			
-			break;
-		
+			case R.id.v1_menu_item_list:
+				//
+				i = new Intent();
+				i.setClass(this, ItemList.class);
+				startActivity(i);
+				
+				break;
 		}//switch (item.getItemId())
 		
 		return super.onOptionsItemSelected(item);

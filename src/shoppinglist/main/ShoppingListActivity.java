@@ -1,5 +1,6 @@
 package shoppinglist.main;
 
+import shoppinglist.lib.Methods;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,6 +48,12 @@ public class ShoppingListActivity extends ListActivity {
 				i = new Intent();
 				i.setClass(this, ItemList.class);
 				startActivity(i);
+				
+				break;
+				
+			case R.id.v1_menu_register_store:
+				//
+				Methods.register_store(this);
 				
 				break;
 		}//switch (item.getItemId())

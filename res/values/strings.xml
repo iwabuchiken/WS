@@ -16,5 +16,9 @@
     <string name="adapteritem_tv_store">品物リスト</string>
     <string name="adapteritem_tv_price">品物リスト</string>
     <string name="v1_menu_register_shop">店舗登録</string>
+    <string name="dlg_register_store_ok">登録</string>
+    <string name="dlg_register_store_cancel">キャンセル</string>
+    <string name="dlg_register_store_message">店舗の名前をどうぞ</string>
+    <string name="dlg_register_store_title">店舗登録</string>
     
 </resources>

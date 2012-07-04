@@ -3,53 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:id="@+id/dlg_register_store_LL_root"
+    android:id="@+id/dlg_input_empty_LL_root"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-        android:id="@+id/dlg_register_store_LL_message"
+        android:id="@+id/dlg_input_empty_LL_message"
         >
 
         <TextView
-            android:id="@+id/dlg_register_store_tv"
+            android:id="@+id/dlg_input_empty_tv"
+            
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             
-            android:text="@string/dlg_register_store_message"
             android:textSize="25dp"
+            android:text="@string/dlg_input_empty_message"
             
-            android:paddingLeft="15dp"
             android:paddingBottom="5dp"
             
+            android:gravity="center"
+            
             />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:id="@+id/dlg_register_store_LL_edit"
-        >
-
-        <EditText
-            android:id="@+id/dlg_register_store_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            
-            android:textSize="25dp"
-            
-            android:ems="10" 
-            
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            
-            >
-
-            <requestFocus />
-        </EditText>
 
     </LinearLayout>
 
@@ -61,18 +37,18 @@
         android:gravity="center_horizontal"
         
          
-        android:id="@+id/dlg_register_store_LL_buttons"
+        android:id="@+id/dlg_input_empty_LL_buttons"
         >
 
         <Button
-            android:id="@+id/dlg_register_store_btn_ok"
+            android:id="@+id/dlg_input_empty_btn_reenter"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             
             android:minWidth="160dp"
             
-            android:textSize="25dp"
-            android:text="@string/dlg_register_store_ok"
+            android:textSize="22dp"
+            android:text="@string/dlg_input_empty_reenter"
             android:textColor="@color/blue1"
             
             android:layout_weight="1"
@@ -86,7 +62,7 @@
             />
 
         <Button
-            android:id="@+id/dlg_register_store_btn_cancel"
+            android:id="@+id/dlg_input_empty_btn_cancel"
             
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -94,7 +70,7 @@
             android:minWidth="160dp"
             
             android:textSize="25dp"
-            android:text="@string/dlg_register_store_cancel"
+            android:text="@string/dlg_input_empty_cancel"
             android:textColor="@color/red"
             
             android:layout_weight="1"

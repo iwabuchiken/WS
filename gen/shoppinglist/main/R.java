@@ -16,6 +16,7 @@ public final class R {
         public static final int v1_menu_item_list=0x7f020002;
         public static final int v1_menu_item_list_30x30=0x7f020003;
         public static final int v1_menu_item_list_50x50=0x7f020004;
+        public static final int v1_menu_item_register_store_2_30x30=0x7f020005;
     }
     public static final class id {
         public static final int adapteritem_LL_item_name=0x7f060001;
@@ -39,6 +40,7 @@ public final class R {
         public static final int v1_menu_1=0x7f060016;
         public static final int v1_menu_add_item=0x7f060017;
         public static final int v1_menu_item_list=0x7f060018;
+        public static final int v1_menu_register_store=0x7f060019;
         public static final int v1_tv_genre=0x7f060012;
         public static final int v1_tv_name=0x7f06000c;
         public static final int v1_tv_price=0x7f06000f;
@@ -64,6 +66,7 @@ public final class R {
         public static final int v1_menu_1=0x7f040002;
         public static final int v1_menu_item_list=0x7f040009;
         public static final int v1_menu_register_item=0x7f040003;
+        public static final int v1_menu_register_shop=0x7f04000d;
         public static final int v1_tv_genre=0x7f040007;
         public static final int v1_tv_item=0x7f040004;
         public static final int v1_tv_price=0x7f040006;

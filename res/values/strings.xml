@@ -15,5 +15,6 @@
     <string name="adapteritem_tv_item_name">品物リスト</string>
     <string name="adapteritem_tv_store">品物リスト</string>
     <string name="adapteritem_tv_price">品物リスト</string>
+    <string name="v1_menu_register_shop">店舗登録</string>
     
 </resources>

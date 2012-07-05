@@ -132,6 +132,7 @@ public class Methods {
 		/*----------------------------
 		 * Steps
 		 * 1. Table exists?
+		 * 1-2. If not => Create table
 		 * 2. Reconfirm store name
 			----------------------------*/
 		
@@ -148,7 +149,16 @@ public class Methods {
 			Log.d("Methods.java" + "["
 					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 					+ "]", "Table does not exist => " + tableName);
+
+			/*----------------------------
+			 * 1-2. If not => Create table
+				----------------------------*/
+			//
+			String[] columns = DBManager.columns_for_table_stores;
 			
+			String[] types = DBManager.column_types_for_table_stores;
+			
+			dbm.createTable_generic(db, tableName, columns, types);
 			
 		} else {//if (!dbm.tableExists(db, tableName))
 			// Log
@@ -256,9 +266,16 @@ public class Methods {
 		//
 		TextView tv_store_name = 
 					(TextView) dlg2.findViewById(
-							R.id.dlg_reconfirm_store_name_tv_message_store_name);
+//							R.id.dlg_reconfirm_store_name_tv_message_store_name);
+							R.id.dlg_reconfirm_store_name_tv_store_name);
 		
 		String storeName = tv_store_name.getText().toString();
+		
+		// Log
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "Store name => " + storeName);
+		
 		
 		// 
 		DBManager dbm = new DBManager(actv);

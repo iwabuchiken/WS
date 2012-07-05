@@ -30,11 +30,14 @@ public class DBManager extends SQLiteOpenHelper {
 	static String[] columns_with_index = 
 					{"store", "name", "price", "genre", android.provider.BaseColumns._ID};
 
-	public static String[] columns_stores = 
+	public static String[] columns_for_table_stores = 
 					{"store_name", "memo"};
-	public static String[] columns_stores_with_index = 
-		{"store_name", "memo", android.provider.BaseColumns._ID};
+	
+	public static String[] columns_for_table_stores_with_index = 
+		{android.provider.BaseColumns._ID, "store_name", "memo"};
 
+	public static String[] column_types_for_table_stores = 
+		{"TEXT", "TEXT"};
 	
 	public DBManager(Context context) {
 		super(context, name, factory, version);
@@ -120,6 +123,94 @@ public class DBManager extends SQLiteOpenHelper {
 		
 	}//public boolean createTable(SQLiteDatabase db, String tableName)
 
+	/****************************************
+	 * createTable_generic()
+	 * 
+	 * <Caller> 
+	 * 1. 
+	 * 
+	 * <Desc> 1. <Params> 1.
+	 * 
+	 * <Return> 1.
+	 * 
+	 * <Steps> 1.
+	 ****************************************/
+	public boolean createTable_generic(
+					SQLiteDatabase db, String tableName, String[] columns, String[] types) {
+		/*----------------------------
+		 * Steps
+		 * 1. Table exists?
+		 * 2. Build sql
+		 * 3. Exec sql
+			----------------------------*/
+		
+		//
+//		if (!tableExists(db, tableName)) {
+		if (tableExists(db, tableName)) {
+			// Log
+			Log.d("DBManager.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table exists => " + tableName);
+			
+			return false;
+		}//if (!tableExists(SQLiteDatabase db, String tableName))
+		
+		/*----------------------------
+		 * 2. Build sql
+			----------------------------*/
+		//
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("CREATE TABLE " + tableName + " (");
+		sb.append(android.provider.BaseColumns._ID +
+							" INTEGER PRIMARY KEY AUTOINCREMENT, ");
+		
+		int i = 0;
+		for (i = 0; i < columns.length - 1; i++) {
+			sb.append(columns[i] + " " + types[i] + ", ");
+		}//for (int i = 0; i < columns.length - 1; i++)
+		
+		sb.append(columns[i] + " " + types[i]);
+		
+		sb.append(");");
+		
+		// Log
+		Log.d("DBManager.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "sql => " + sb.toString());
+		
+		return false;
+		
+//		String sql = "CREATE TABLE " + tableName + " ("
+//				+ android.provider.BaseColumns._ID
+//				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//				"store TEXT, name TEXT, price INTEGER, genre TEXT);";
+//		
+//		/*----------------------------
+//		 * 3. Exec sql
+//			----------------------------*/
+//		//
+//		try {
+//			db.execSQL(sql);
+//			
+//			// Log
+//			Log.d("DBManager.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "Table created => " + tableName);
+//			
+//			
+//			return true;
+//		} catch (SQLException e) {
+//			// Log
+//			Log.d("MemoDBHelper.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "Exception => " + e.toString());
+//			
+//			return false;
+//		}//try
+		
+	}//public boolean createTable_generic(SQLiteDatabase db, String tableName)
+
 	public boolean storeData(SQLiteDatabase db, String tableName, String[] cols, String[] values) {
 		try {
 			//
@@ -168,3 +259,4 @@ public class DBManager extends SQLiteOpenHelper {
 		
 	}//public boolean storeData(SQLiteDatabase db, String tableName, String[] cols, String[] values)
 }
+

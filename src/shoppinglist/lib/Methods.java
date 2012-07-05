@@ -1,9 +1,15 @@
 package shoppinglist.lib;
 
+import shoppinglist.main.DBManager;
 import shoppinglist.main.R;
 import android.app.Activity;
 import android.app.Dialog;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Methods {
 
@@ -16,7 +22,10 @@ public class Methods {
 		dlg_register_store_ok, dlg_register_store_cancel,
 
 		// dlg_input_empty.xml
-		dlg_input_empty_btn_reenter, dlg_input_empty_btn_cancel
+		dlg_input_empty_btn_reenter, dlg_input_empty_btn_cancel,
+		
+		// dlg_reconfirm_store_name.xml
+		dlg_reconfirm_store_name_btn_yes, dlg_reconfirm_store_name_btn_cancel
 	}
 	
 	
@@ -118,9 +127,189 @@ public class Methods {
 	}//public static void dlg_input_empty(Activity actv, Dialog dlg)
 
 
-	public static void insertStoreName(String tableName, String storeName) {
-		// TODO 自動生成されたメソッド・スタブ
+	public static void insertStoreName(
+					Activity actv, Dialog dlg, String tableName, String storeName) {
+		/*----------------------------
+		 * Steps
+		 * 1. Table exists?
+		 * 2. Reconfirm store name
+			----------------------------*/
 		
-	}
+		// 
+		DBManager dbm = new DBManager(actv);
+		
+		SQLiteDatabase db = dbm.getWritableDatabase();
+		
+		//
+		if (!dbm.tableExists(db, tableName)) {
+			//
+//			dbm.createTable(db, tableName);
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table does not exist => " + tableName);
+			
+			
+		} else {//if (!dbm.tableExists(db, tableName))
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table exists => " + tableName);
+			
+		}//if (!dbm.tableExists(db, tableName))
+		
+		// Log
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "Store name => " + storeName);
+		
+		//
+		db.close();
+		
+		/*----------------------------
+		 * 2. Reconfirm store name
+			----------------------------*/
+		dlg_reconfirm_store_name(actv, dlg, tableName, storeName);
+		
+		
+	}//public static void insertStoreName(Activity actv, String tableName, String storeName)
+
+	/****************************************
+	 * dlg_reconfirm_store_name()
+	 * 
+	 * <Caller> 
+	 * 1. insertStoreName()
+	 * 
+	 * <Desc> 1. <Params> 1.
+	 * 
+	 * <Return> 1.
+	 * 
+	 * <Steps> 1.
+	 ****************************************/
+	private static void dlg_reconfirm_store_name(
+										Activity actv, Dialog dlg,
+										String tableName, String storeName) {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 2. Add listeners => OnTouch
+		 * 3. Add listeners => OnClick
+		 * 4. Set store name
+			----------------------------*/
+		
+		// 
+		Dialog dlg_new = new Dialog(actv);
+		
+		//
+		dlg_new.setContentView(R.layout.dlg_reconfirm_store_name);
+		
+		// Title
+		dlg_new.setTitle(R.string.dlg_reconfirm_store_name_title);
+		
+		/*----------------------------
+		 * 2. Add listeners => OnTouch
+			----------------------------*/
+		//
+		Button btn_ok = (Button) dlg_new.findViewById(R.id.dlg_reconfirm_store_name_btn_yes);
+		Button btn_cancel = (Button) dlg_new.findViewById(R.id.dlg_reconfirm_store_name_btn_cancel);
+		
+		//
+		btn_ok.setTag(DialogTags.dlg_reconfirm_store_name_btn_yes);
+		btn_cancel.setTag(DialogTags.dlg_reconfirm_store_name_btn_cancel);
+		
+		//
+		btn_ok.setOnTouchListener(new DialogButtonOnTouchListener(actv));
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv));
+		
+		/*----------------------------
+		 * 3. Add listeners => OnClick
+			----------------------------*/
+		//
+		btn_ok.setOnClickListener(new DialogButtonOnClickListener(actv, dlg, dlg_new));
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg, dlg_new));
+		
+		/*----------------------------
+		 * 4. Set store name
+			----------------------------*/
+		//
+//		TextView tv_store_name = (TextView) dlg_new.findViewById(R.id.dlg_reconfirm_store_name_tv_message_store_name);
+		TextView tv_store_name = (TextView) dlg_new.findViewById(R.id.dlg_reconfirm_store_name_tv_store_name);
+		
+		tv_store_name.setText(storeName);
+		tv_store_name.setTextColor(Color.YELLOW);
+		
+		//
+		dlg_new.show();
+		
+	}//private static void dlg_reconfirm_store_name
+
+
+	public static void insertStoreName_final(
+							Activity actv, Dialog dlg, Dialog dlg2, String tableName) {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 2. Insert data
+		 * 3. Close db
+			----------------------------*/
+		
+		//
+		TextView tv_store_name = 
+					(TextView) dlg2.findViewById(
+							R.id.dlg_reconfirm_store_name_tv_message_store_name);
+		
+		String storeName = tv_store_name.getText().toString();
+		
+		// 
+		DBManager dbm = new DBManager(actv);
+		
+		SQLiteDatabase db = dbm.getWritableDatabase();
+
+		/*----------------------------
+		 * 2. Insert data
+			----------------------------*/
+//		//
+//		dbm.storeData(
+//									db, 
+//									tableName, 
+//									DBManager.columns_stores, 
+//									new String[]{storeName, ""});
+//		
+		/*----------------------------
+		 * 3. Close db
+			----------------------------*/
+		db.close();
+
+		
+//		//debug
+//		String q = "DROP TABLE stores;";
+//		
+//		db.execSQL(q);
+//		
+//		// Log
+//		Log.d("Methods.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", "db.execSQL(q) => Done");
+		
+		
+//		Cursor c = db.rawQuery(q, null);
+
+//		// Log
+//		Log.d("Methods.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", "c => " + c.toString());
+		
+		
+//		//
+//		db.close();
+		
+//		// Log
+//		Log.d("Methods.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", "Store name => " + tv_store_name.getText().toString());
+		
+		
+		
+	}//public static void insertStoreName_final()
 
 }

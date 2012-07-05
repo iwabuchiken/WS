@@ -14,7 +14,7 @@ public class DialogButtonOnClickListener implements OnClickListener {
 	//
 	Activity actv;
 	Dialog dlg;
-	Dialog dlg2;
+	Dialog dlg2;		//=> Used in dlg_input_empty_btn_XXX
 
 	public DialogButtonOnClickListener(Activity actv, Dialog dlg) {
 		//
@@ -51,7 +51,7 @@ public class DialogButtonOnClickListener implements OnClickListener {
 				
 			} else {//if (et.getText().toString().equals(""))
 				
-				Methods.insertStoreName("stores", et.getText().toString());
+				Methods.insertStoreName(actv, dlg, "stores", et.getText().toString());
 				
 			}//if (et.getText().toString().equals(""))
 			
@@ -75,6 +75,19 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			dlg.dismiss();
 			
 			break;
+			
+		case dlg_reconfirm_store_name_btn_yes:
+//			//
+//			et object = (et) findViewById(arguement);
+//			
+			Methods.insertStoreName_final(actv, dlg, dlg2, "stores");
+			
+			break;
+			
+		case dlg_reconfirm_store_name_btn_cancel:
+			dlg2.dismiss();
+			break;
+			
 		}//switch (tag_name)
 	}
 

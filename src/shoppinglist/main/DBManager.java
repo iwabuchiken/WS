@@ -27,7 +27,14 @@ public class DBManager extends SQLiteOpenHelper {
 	static String tableName = "shopping_item";
 
 	static String[] columns = {"store", "name", "price", "genre"};
-	static String[] columns_with_index = {"store", "name", "price", "genre", android.provider.BaseColumns._ID};
+	static String[] columns_with_index = 
+					{"store", "name", "price", "genre", android.provider.BaseColumns._ID};
+
+	public static String[] columns_stores = 
+					{"store_name", "memo"};
+	public static String[] columns_stores_with_index = 
+		{"store_name", "memo", android.provider.BaseColumns._ID};
+
 	
 	public DBManager(Context context) {
 		super(context, name, factory, version);
@@ -134,6 +141,19 @@ public class DBManager extends SQLiteOpenHelper {
 
 			// End transaction
 			db.endTransaction();
+			
+			// Log
+			StringBuilder sb = new StringBuilder();
+			
+			for (int i = 0; i < cols.length; i++) {
+				//
+				sb.append(cols[i] + " => " + values[i] + "/");
+				
+			}//for (int i = 0; i < cols.length; i++)
+			
+			Log.d("DBManager.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Stored => " + sb.toString());
 			
 			return true;
 			

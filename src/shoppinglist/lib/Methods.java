@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Methods {
 
@@ -261,6 +262,7 @@ public class Methods {
 		 * 1. Set up
 		 * 2. Insert data
 		 * 3. Close db
+		 * 4. Close dialogues
 			----------------------------*/
 		
 		//
@@ -285,18 +287,46 @@ public class Methods {
 		/*----------------------------
 		 * 2. Insert data
 			----------------------------*/
-//		//
-//		dbm.storeData(
-//									db, 
-//									tableName, 
-//									DBManager.columns_stores, 
-//									new String[]{storeName, ""});
-//		
+		//
+		boolean result = dbm.storeData(
+										db, 
+										tableName, 
+										DBManager.columns_for_table_stores, 
+										new String[]{storeName, ""});
+		
+		// Log
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "dbm.storeData => " + result);
+			
 		/*----------------------------
 		 * 3. Close db
 			----------------------------*/
 		db.close();
 
+		
+		/*----------------------------
+		 * 4. Close dialogues
+			----------------------------*/
+		//
+		if (result == true) {
+			// debug
+			Toast.makeText(actv, "ìXï‹ñºÇ™ìoò^Ç≥ÇÍÇ‹ÇµÇΩÅ@=>Å@" + storeName, 3000).show();
+			
+			//
+			dlg2.dismiss();
+			dlg.dismiss();
+			
+		} else {//if (result == true)
+			// debug
+			Toast.makeText(actv, "ìXï‹ñºìoò^Å@=>Å@Ç≈Ç´Ç‹ÇπÇÒÇ≈ÇµÇΩ", 3000).show();
+			
+			//
+			dlg2.dismiss();
+			
+		}//if (result == true)
+		
+		
 		
 //		//debug
 //		String q = "DROP TABLE stores;";

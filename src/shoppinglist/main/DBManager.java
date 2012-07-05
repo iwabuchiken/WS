@@ -179,35 +179,36 @@ public class DBManager extends SQLiteOpenHelper {
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "sql => " + sb.toString());
 		
-		return false;
+//		return false;
 		
 //		String sql = "CREATE TABLE " + tableName + " ("
 //				+ android.provider.BaseColumns._ID
 //				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 //				"store TEXT, name TEXT, price INTEGER, genre TEXT);";
 //		
-//		/*----------------------------
-//		 * 3. Exec sql
-//			----------------------------*/
-//		//
-//		try {
+		/*----------------------------
+		 * 3. Exec sql
+			----------------------------*/
+		//
+		try {
 //			db.execSQL(sql);
-//			
-//			// Log
-//			Log.d("DBManager.java" + "["
-//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-//					+ "]", "Table created => " + tableName);
-//			
-//			
-//			return true;
-//		} catch (SQLException e) {
-//			// Log
-//			Log.d("MemoDBHelper.java" + "["
-//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-//					+ "]", "Exception => " + e.toString());
-//			
-//			return false;
-//		}//try
+			db.execSQL(sb.toString());
+			
+			// Log
+			Log.d("DBManager.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table created => " + tableName);
+			
+			
+			return true;
+		} catch (SQLException e) {
+			// Log
+			Log.d("MemoDBHelper.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Exception => " + e.toString());
+			
+			return false;
+		}//try
 		
 	}//public boolean createTable_generic(SQLiteDatabase db, String tableName)
 

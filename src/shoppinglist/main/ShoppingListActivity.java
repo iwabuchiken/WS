@@ -56,6 +56,12 @@ public class ShoppingListActivity extends ListActivity {
 				Methods.register_store(this);
 				
 				break;
+				
+			case R.id.v1_menu_add_genre:
+				//
+				Methods.registerGenre(this);
+				
+				break;
 		}//switch (item.getItemId())
 		
 		return super.onOptionsItemSelected(item);

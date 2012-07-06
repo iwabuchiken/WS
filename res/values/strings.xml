@@ -32,5 +32,14 @@
     <string name="dlg_reconfirm_store_name_message_reconfirm">登録してよろしいですか</string>
     <string name="dlg_reconfirm_store_name_ok">よい</string>
     <string name="dlg_reconfirm_store_name_cancel">キャンセル</string>
+    <string name="v1_menu_add_genre">ジャンル登録</string>
+    
+    <string name="dlg_register_genre_message">ジャンルの名前をどうぞ</string>
+    <string name="dlg_register_genre_title">ジャンル登録</string>
+    
+    <string name="generic_register">登録</string>
+    <string name="generic_ok">OK</string>
+    <string name="generic_cancel">キャンセル</string>
+
     
 </resources>

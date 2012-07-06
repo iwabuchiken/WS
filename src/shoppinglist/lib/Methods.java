@@ -26,7 +26,10 @@ public class Methods {
 		dlg_input_empty_btn_reenter, dlg_input_empty_btn_cancel,
 		
 		// dlg_reconfirm_store_name.xml
-		dlg_reconfirm_store_name_btn_yes, dlg_reconfirm_store_name_btn_cancel
+		dlg_reconfirm_store_name_btn_yes, dlg_reconfirm_store_name_btn_cancel,
+		
+		// dlg_register_genre.xml
+		dlg_register_genre_register, dlg_register_genre_cancel,
 	}
 	
 	
@@ -358,5 +361,53 @@ public class Methods {
 		
 		
 	}//public static void insertStoreName_final()
+
+	public static void registerGenre(Activity actv) {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 2. Add listeners => OnTouch
+		 * 3. Add listeners => OnClick
+			----------------------------*/
+		
+		// 
+		Dialog dlg = new Dialog(actv);
+		
+		//
+		dlg.setContentView(R.layout.dlg_register_genre);
+		
+		// Title
+		dlg.setTitle(R.string.dlg_register_genre_title);
+		
+		/*----------------------------
+		 * 2. Add listeners => OnTouch
+			----------------------------*/
+		//
+		Button btn_ok = (Button) dlg.findViewById(R.id.dlg_register_genre_btn_register);
+		Button btn_cancel = (Button) dlg.findViewById(R.id.dlg_register_genre_btn_cancel);
+		
+		//
+		btn_ok.setTag(DialogTags.dlg_register_genre_register);
+		btn_cancel.setTag(DialogTags.dlg_register_genre_cancel);
+		
+		//
+		btn_ok.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		
+		/*----------------------------
+		 * 3. Add listeners => OnClick
+			----------------------------*/
+		//
+		btn_ok.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		
+		
+		//
+		dlg.show();
+		
+		
+		
+		
+	}//public static void registerGenre(Activity actv)
 
 }

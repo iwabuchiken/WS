@@ -4,6 +4,7 @@
     <item android:id="@+id/v1_menu_add_item" android:title="@string/v1_menu_register_item" android:icon="@android:drawable/ic_input_add"></item>
     <item android:id="@+id/v1_menu_item_list" android:title="@string/v1_menu_item_list" android:icon="@drawable/v1_menu_item_list_30x30"></item>
     <item android:id="@+id/v1_menu_register_store" android:icon="@drawable/v1_menu_item_register_store_2_30x30" android:title="@string/v1_menu_register_shop"></item>
+    <item android:id="@+id/v1_menu_add_genre" android:icon="@drawable/v1_menu_add_genre_30x30"   android:title="@string/v1_menu_add_genre"></item>
     
 
 </menu>

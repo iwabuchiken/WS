@@ -87,7 +87,30 @@ public class DialogButtonOnClickListener implements OnClickListener {
 		case dlg_reconfirm_store_name_btn_cancel:
 			dlg2.dismiss();
 			break;
+
+		case dlg_register_genre_cancel:
+			dlg.dismiss();
+			break;
 			
+		case dlg_register_genre_register:
+			/*----------------------------
+			 * Validate if the edit view has some input.
+			 * If no input => Show another dialog
+				----------------------------*/
+			//
+			et = (EditText) dlg.findViewById(R.id.dlg_register_store_et);
+			
+			if (et.getText().toString().equals("")) {
+				
+				Methods.dlg_input_empty(actv, dlg);
+				
+			} else {//if (et.getText().toString().equals(""))
+				
+				Methods.insertStoreName(actv, dlg, "stores", et.getText().toString());
+				
+			}//if (et.getText().toString().equals(""))
+			
+			break;
 		}//switch (tag_name)
 	}
 

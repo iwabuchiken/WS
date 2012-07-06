@@ -40,6 +40,9 @@
     <string name="generic_register">登録</string>
     <string name="generic_ok">OK</string>
     <string name="generic_cancel">キャンセル</string>
+    <string name="generic_message_register">登録してよろしいですか？</string>
+    <string name="dlg_reconfirm_genre_name">ジャンル名</string>
+    <string name="generic_title_reconfirm">確認</string>
 
     
 </resources>

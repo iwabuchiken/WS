@@ -37,7 +37,19 @@ public class DBManager extends SQLiteOpenHelper {
 		{android.provider.BaseColumns._ID, "store_name", "memo"};
 
 	public static String[] column_types_for_table_stores = 
-		{"TEXT", "TEXT"};
+																	{"TEXT", "TEXT"};
+	
+	public static String[] columns_for_table_genres = 
+					{"genre_name", "memo"};
+
+	
+	public static String[] columns_for_table_genres_with_index = 
+		{android.provider.BaseColumns._ID, "genre_name", "memo"};
+
+	public static String[] column_types_for_table_genres = 
+																	{"TEXT", "TEXT"};
+	
+
 	
 	public DBManager(Context context) {
 		super(context, name, factory, version);

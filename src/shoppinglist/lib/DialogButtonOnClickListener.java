@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class DialogButtonOnClickListener implements OnClickListener {
 	/*----------------------------
@@ -98,7 +99,7 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			 * If no input => Show another dialog
 				----------------------------*/
 			//
-			et = (EditText) dlg.findViewById(R.id.dlg_register_store_et);
+			et = (EditText) dlg.findViewById(R.id.dlg_register_genre_et);
 			
 			if (et.getText().toString().equals("")) {
 				
@@ -106,11 +107,33 @@ public class DialogButtonOnClickListener implements OnClickListener {
 				
 			} else {//if (et.getText().toString().equals(""))
 				
-				Methods.insertStoreName(actv, dlg, "stores", et.getText().toString());
+				Methods.dlg_reconfirm_genre_name(actv, dlg, "genres", et.getText().toString());
+				
+//				// debug
+//				Toast.makeText(actv, "Start => registerGenre()",
+//						2000).show();
+				
+//				Methods.insertStoreName(actv, dlg, "stores", et.getText().toString());
 				
 			}//if (et.getText().toString().equals(""))
 			
 			break;
+			
+		// dlg_reconfirm_genre_name.xml
+		case dlg_reconfirm_genre_name_btn_register:
+			
+			Methods.registerGenreName_final(actv, dlg, dlg2, "genres");
+			
+//			// debug
+//			Toast.makeText(actv, "Register", 2000).show();
+			
+			break;
+			
+		case dlg_reconfirm_genre_name_btn_cancel:
+			dlg2.dismiss();
+			
+			break;
+			
 		}//switch (tag_name)
 	}
 

@@ -30,7 +30,11 @@ public class Methods {
 		
 		// dlg_register_genre.xml
 		dlg_register_genre_register, dlg_register_genre_cancel,
-	}
+		
+		// dlg_reconfirm_genre_name.xml
+		dlg_reconfirm_genre_name_btn_register, dlg_reconfirm_genre_name_btn_cancel,
+		
+	}//public static enum DialogTags
 	
 	
 	public static void register_store(Activity actv) {
@@ -410,4 +414,263 @@ public class Methods {
 		
 	}//public static void registerGenre(Activity actv)
 
+	public static void dlg_reconfirm_genre_name(
+								Activity actv, Dialog dlg, String tableName, String genreName) {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 2. Add listeners => OnTouch
+		 * 3. Add listeners => OnClick
+		 * 4. Set store name
+			----------------------------*/
+		
+		// 
+		Dialog dlg_new = new Dialog(actv);
+		
+		//
+		dlg_new.setContentView(R.layout.dlg_reconfirm_genre_name);
+		
+		// Title
+		dlg_new.setTitle(R.string.generic_title_reconfirm);
+		
+		/*----------------------------
+		 * 2. Add listeners => OnTouch
+			----------------------------*/
+		//
+		Button btn_ok = (Button) dlg_new.findViewById(R.id.dlg_reconfirm_genre_name_btn_yes);
+		Button btn_cancel = (Button) dlg_new.findViewById(R.id.dlg_reconfirm_genre_name_btn_cancel);
+		
+		//
+		btn_ok.setTag(DialogTags.dlg_reconfirm_genre_name_btn_register);
+		btn_cancel.setTag(DialogTags.dlg_reconfirm_genre_name_btn_cancel);
+		
+		//
+		btn_ok.setOnTouchListener(new DialogButtonOnTouchListener(actv));
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv));
+		
+		/*----------------------------
+		 * 3. Add listeners => OnClick
+			----------------------------*/
+		//
+		btn_ok.setOnClickListener(new DialogButtonOnClickListener(actv, dlg, dlg_new));
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg, dlg_new));
+		
+		/*----------------------------
+		 * 4. Set store name
+			----------------------------*/
+		//
+//		TextView tv_store_name = (TextView) dlg_new.findViewById(R.id.dlg_reconfirm_store_name_tv_message_store_name);
+		TextView tv_genre_name = 
+					(TextView) dlg_new.findViewById(R.id.dlg_reconfirm_genre_name_tv_genre_name);
+		
+		tv_genre_name.setText(genreName);
+		tv_genre_name.setTextColor(Color.YELLOW);
+		
+		//
+		dlg_new.show();
+		
+	}//public static void dlg_reconfirm_genre_name
+	
+	public static void registerGenre_final(Activity actv, Dialog dlg1, Dialog dlg2) {
+		/*----------------------------
+		 * Steps
+			----------------------------*/
+		
+	}//public static void registerGenre_final(Activity actv, Dialog dlg1, Dialog dlg2)
+
+
+	
+	public static void registerGenreName_final(Activity actv, Dialog dlg,
+			Dialog dlg2, String tableName) {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 1-2. Table exists?
+		 * 2. Insert data
+		 * 3. Close db
+		 * 4. Close dialogues
+			----------------------------*/
+		
+		//
+		TextView tv_genre_name = 
+					(TextView) dlg2.findViewById(
+//							R.id.dlg_reconfirm_store_name_tv_message_store_name);
+							R.id.dlg_reconfirm_genre_name_tv_genre_name);
+		
+//		// debug
+//		Toast.makeText(actv, tv_genre_name.getText(), 2000).show();
+		
+		String genreName = tv_genre_name.getText().toString();
+		
+		// Log
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "Genre name => " + genreName);
+		
+		
+		// 
+		DBManager dbm = new DBManager(actv);
+		
+		SQLiteDatabase db = dbm.getWritableDatabase();
+		
+		// Log
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "DB => Opened");
+		
+		/*----------------------------
+		 * 1-2. Table exists?
+			----------------------------*/
+		//
+		boolean result = dbm.tableExists(db, tableName);
+		
+		/*----------------------------
+		 * If the table doesn't exist, create a new one
+			----------------------------*/
+		if (result == false) {
+			result = dbm.createTable_generic(
+					db, 
+					tableName, 
+					DBManager.columns_for_table_genres, 
+					DBManager.column_types_for_table_genres);
+			
+			if (result == false) {
+				/*----------------------------
+				 * If "create table" failed, dismiss the reconfirm dialog
+				 * 		=> Close db
+				 * 		=> Back to "Enter genre name" dialog
+					----------------------------*/
+				
+				// Log
+				Log.d("Methods.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", "Create table => Failed: " + tableName);
+				
+				// debug
+				Toast.makeText(actv, "Create table => Failed: " + tableName, 3000).show();
+				
+				db.close();
+				
+				dlg2.dismiss();
+				
+				return;
+				
+			}//if (result == false)
+		}//if (result == false)
+		
+		/*----------------------------
+		 * At this point, the table exists
+			----------------------------*/
+		
+
+		/*----------------------------
+		 * 2. Insert data
+			----------------------------*/
+		//
+		result = dbm.storeData(
+										db, 
+										tableName, 
+										DBManager.columns_for_table_genres, 
+										new String[]{genreName, ""});
+
+//		/*----------------------------
+//		 * If "storeData" failed, dismiss the reconfirm dialog
+//		 * 		=> Close db
+//		 * 		=> Back to "Enter genre name" dialog
+//			----------------------------*/		
+//		if (result == false) {
+//			// Log
+//			Log.d("Methods.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "dbm.storeData => Failed");
+//			
+//			// debug
+//			Toast.makeText(actv, "Store data => Failed", 3000).show();
+//			
+//			db.close();
+//			
+//			dlg2.dismiss();
+//			
+//			return;
+//			
+//		}//if (result == false)
+//		
+//		// Log
+//		Log.d("Methods.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", "Data stored");
+			
+		/*----------------------------
+		 * 3. Close db
+			----------------------------*/
+		db.close();
+		
+		// Log
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "DB => Closed");
+		
+		/*----------------------------
+		 * 4. Close dialogues
+			----------------------------*/
+		//debug
+//		boolean result = true;
+		
+		//
+		if (result == true) {
+			// debug
+			Toast.makeText(actv, "ƒWƒƒƒ“ƒ‹–¼‚ª“o˜^‚³‚ê‚Ü‚µ‚½@=>@" + genreName, 3000).show();
+			
+			//
+			dlg2.dismiss();
+			dlg.dismiss();
+			
+		} else {//if (result == true)
+			/*----------------------------
+			 * If "storeData" failed, dismiss the reconfirm dialog
+			 * 		=> Close db
+			 * 		=> Back to "Enter genre name" dialog
+				----------------------------*/		
+
+			// debug
+			Toast.makeText(actv, "ƒWƒƒƒ“ƒ‹–¼“o˜^@=>@‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½", 3000).show();
+			
+			//
+			dlg2.dismiss();
+			
+		}//if (result == true)
+		
+		
+//		
+////		//debug
+////		String q = "DROP TABLE stores;";
+////		
+////		db.execSQL(q);
+////		
+////		// Log
+////		Log.d("Methods.java" + "["
+////				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+////				+ "]", "db.execSQL(q) => Done");
+//		
+//		
+////		Cursor c = db.rawQuery(q, null);
+//
+////		// Log
+////		Log.d("Methods.java" + "["
+////				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+////				+ "]", "c => " + c.toString());
+//		
+//		
+////		//
+////		db.close();
+//		
+////		// Log
+////		Log.d("Methods.java" + "["
+////				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+////				+ "]", "Store name => " + tv_store_name.getText().toString());
+//		
+//		
+		
+	}//public static void registerGenreName_final
 }

@@ -25,6 +25,7 @@ public class RegisterItem extends Activity {
 
 	//
 	Spinner sp_store_name;
+	Spinner sp_genre_name;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class RegisterItem extends Activity {
 			----------------------------*/
 		set_spinner();
 		
+		setSpinner_genres();
 		/*----------------------------
 		 * 4. Set listener => Register
 			----------------------------*/
@@ -128,14 +130,14 @@ public class RegisterItem extends Activity {
 				
 				EditText et_name = (EditText) findViewById(R.id.v1_et_name);
 				EditText et_price = (EditText) findViewById(R.id.v1_et_price);
-				EditText et_genre = (EditText) findViewById(R.id.v1_et_genre);
+//				EditText et_genre = (EditText) findViewById(R.id.v1_et_genre);
 				
 				// All written?
 //				if(et_store.getText().toString().equals("") ||
 				if(
 						et_name.getText().toString().equals("") ||
-						et_price.getText().toString().equals("") ||
-						et_genre.getText().toString().equals("")
+						et_price.getText().toString().equals("") //||
+//						et_genre.getText().toString().equals("")
 						) {
 					// debug
 					Toast.makeText(RegisterItem.this, "Empty item exists", 2000)
@@ -166,7 +168,8 @@ public class RegisterItem extends Activity {
 										sp_store_name.getSelectedItem().toString(),
 										et_name.getText().toString(),
 										et_price.getText().toString(),
-										et_genre.getText().toString()
+//										et_genre.getText().toString()
+										sp_genre_name.getSelectedItem().toString()
 								});
 				
 				if (result == true) {
@@ -275,4 +278,71 @@ public class RegisterItem extends Activity {
 		sp_store_name.setAdapter(adapter);
 
 	}//void set_spinner()
+
+	void setSpinner_genres() {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 2. Get genre names from db
+		 * 3. Set genre data to adapter
+		 * 3-1. setDropDownViewResource
+		 * 3-2. Close db
+		 * 4. Set adapter to spinner
+			----------------------------*/
+		
+		// Resource => http://www.java2s.com/Open-Source/Android/Samples/techbooster/org/jpn/techbooster/sample/spinner/SpinnerActivity.java.htm
+		sp_genre_name = (Spinner) findViewById(R.id.v1_sp_genre);
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+	              RegisterItem.this, android.R.layout.simple_spinner_item);
+//
+		/*----------------------------
+		 * 2. Get genre names from db
+			----------------------------*/
+		DBManager dbm = new DBManager(this);
+		
+		SQLiteDatabase db = dbm.getReadableDatabase();
+		
+		Cursor c = dbm.getAllData(db, "genres", DBManager.columns_for_table_genres_with_index);
+		
+		// Log
+		Log.d("RegisterItem.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "c.getCount()" + c.getCount());
+		
+		c.moveToFirst();
+		
+		// Log
+		for (int i = 0; i < c.getCount(); i++) {
+			Log.d("RegisterItem.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c.getString(1) => " + c.getString(1));
+
+			/*----------------------------
+			 * 3. Set genre data to adapter
+				----------------------------*/
+//			adapter.add("abc");
+			adapter.add(c.getString(1));
+
+			c.moveToNext();
+		}//for (int i = 0; i < c.getCount(); i++)
+		
+		
+		/*----------------------------
+		 * 3-1. setDropDownViewResource
+			----------------------------*/
+		adapter.setDropDownViewResource(
+						android.R.layout.simple_spinner_dropdown_item);
+		
+		/*----------------------------
+		 * 3-2. Close db
+			----------------------------*/
+		db.close();
+		
+		/*----------------------------
+		 * 4. Set adapter to spinner
+			----------------------------*/
+		sp_genre_name.setAdapter(adapter);
+		
+	}
 }

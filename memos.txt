@@ -13,3 +13,4 @@ C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\Activity_
 
 [Git]
 git log --grep=B4 -3
+git log --grep=B5 -3

@@ -259,5 +259,13 @@ public class DBManager extends SQLiteOpenHelper {
 		}//try
 		
 	}//public boolean storeData(SQLiteDatabase db, String tableName, String[] cols, String[] values)
+
+	public Cursor getAllData(
+					SQLiteDatabase db, String tableName, String[] cols) {
+		//
+		Cursor cursor = db.query(tableName, cols, null, null, null, null, null);
+		
+		return cursor;
+	}
 }
 

@@ -14,15 +14,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/v1_tv_store"
-            android:textSize="25dp" />
+            android:textSize="25dp" 
+            />
 
-        <EditText
-            android:id="@+id/v1_et_store"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/v1_sp_store"
+            
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:minWidth="150dp"
-            android:textSize="25dp" />
+            
+            android:textSize="25dp"
+            
+            android:layout_weight="1" 
+            />
+
     </LinearLayout>
     
     <LinearLayout

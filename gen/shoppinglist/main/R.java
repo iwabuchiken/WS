@@ -77,11 +77,11 @@ public final class R {
         public static final int v1_et_genre=0x7f07002b;
         public static final int v1_et_name=0x7f070025;
         public static final int v1_et_price=0x7f070028;
-        public static final int v1_et_store=0x7f070022;
         public static final int v1_menu_1=0x7f07002e;
         public static final int v1_menu_add_item=0x7f07002f;
         public static final int v1_menu_item_list=0x7f070030;
         public static final int v1_menu_register_store=0x7f070031;
+        public static final int v1_sp_store=0x7f070022;
         public static final int v1_tv_genre=0x7f07002a;
         public static final int v1_tv_name=0x7f070024;
         public static final int v1_tv_price=0x7f070027;

@@ -55,10 +55,10 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
         //
         ShoppingItem si = (ShoppingItem) getItem(position);
         
-        // Log
-		Log.d("ItemListAdapter.java" + "["
-				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ "]", "si.getName() => " + si.getName());
+//        // Log
+//		Log.d("ItemListAdapter.java" + "["
+//				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ "]", "si.getName() => " + si.getName());
 		
 		/*----------------------------
 		 * 4. Set values

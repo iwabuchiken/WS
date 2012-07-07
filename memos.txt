@@ -5,10 +5,15 @@ g a .
 
 a
 cd C:\WORKS\WORKSPACES_ANDROID\ShoppingList
+C:\WORKS\WORKSPACES_ANDROID\FM\a
+C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\ShoppingList.mm
 gitk
 
 C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\ShoppingList.mm
 C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\Activity_log.mm
+
+a
+
 
 
 [Git]

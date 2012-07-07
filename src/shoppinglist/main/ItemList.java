@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class ItemList extends ListActivity {
@@ -139,4 +141,19 @@ public class ItemList extends ListActivity {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onDestroy();
 	}
+
+	@Override
+	protected void onListItemClick(ListView lv, View v, int position, long id) {
+		// TODO 自動生成されたメソッド・スタブ
+		super.onListItemClick(lv, v, position, id);
+		
+		ShoppingItem si = (ShoppingItem) lv.getItemAtPosition(position);
+		
+		// Log
+		Log.d("ItemList.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "si.toString() => " + si.toString());
+		
+		
+	}//protected void onListItemClick(ListView l, View v, int position, long id)
 }

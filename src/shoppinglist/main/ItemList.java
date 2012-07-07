@@ -71,7 +71,8 @@ public class ItemList extends ListActivity {
 									c.getString(0),		// store
 									c.getString(1),		// name
 									c.getInt(2),			// price
-									c.getString(3)		// genre
+									c.getString(3),		// genre
+									c.getInt(4)				// id
 									);
 			
 			//
@@ -152,7 +153,10 @@ public class ItemList extends ListActivity {
 		// Log
 		Log.d("ItemList.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-				+ "]", "si.toString() => " + si.toString());
+//				+ "]", "si.toString() => " + si.toString());
+				+ "]", 
+				"si.getName() => " + si.getName()+
+				"/" + "id=" + si.getId());
 		
 		
 	}//protected void onListItemClick(ListView l, View v, int position, long id)

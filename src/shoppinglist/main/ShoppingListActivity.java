@@ -62,6 +62,14 @@ public class ShoppingListActivity extends ListActivity {
 				Methods.registerGenre(this);
 				
 				break;
+				
+			case R.id.v1_menu_db_manager:
+				//
+				i = new Intent();
+				i.setClass(this, DBAdminActivity.class);
+				startActivity(i);
+				
+				break;
 		}//switch (item.getItemId())
 		
 		return super.onOptionsItemSelected(item);

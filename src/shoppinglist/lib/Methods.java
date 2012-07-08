@@ -1,5 +1,8 @@
 package shoppinglist.lib;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import shoppinglist.main.DBManager;
 import shoppinglist.main.R;
 import android.app.Activity;
@@ -8,12 +11,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.util.Log;
+import android.view.ViewGroup.LayoutParams;
+//import android.view.WindowManager.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Methods {
 
+	//
+	static ArrayAdapter<String> adapter;		//=> Used in: public static void dlg_dropTable(Activity actv)
+	
 	/*----------------------------
 	 * Variables
 		----------------------------*/
@@ -34,8 +45,22 @@ public class Methods {
 		// dlg_reconfirm_genre_name.xml
 		dlg_reconfirm_genre_name_btn_register, dlg_reconfirm_genre_name_btn_cancel,
 		
+		// dlg_create_table.xml
+		dlg_create_table_create, dlg_create_table_cancel,
+
+		// dlg_drop_table.xml
+		dlg_drop_table_btn_cancel, dlg_drop_table,
+		
+		// dlg_confirm_drop_table.xml
+		dlg_confirm_drop_table_btn_ok, dlg_confirm_drop_table_btn_cancel, dlg_confirm_drop_table,
+		
 	}//public static enum DialogTags
 	
+	public static enum ButtonTags {
+		// DBAdminActivity.java
+		db_manager_activity_create_table, db_manager_activity_drop_table,
+		
+	}//public static enum ButtonTags
 	
 	public static void register_store(Activity actv) {
 		/*----------------------------
@@ -673,4 +698,340 @@ public class Methods {
 //		
 		
 	}//public static void registerGenreName_final
+
+
+	public static void dlg_createTable(Activity actv) {
+		Dialog dlg = new Dialog(actv);
+		
+		//
+		dlg.setContentView(R.layout.dlg_create_table);
+		
+		// Title
+		dlg.setTitle(R.string.dlg_create_table_title);
+		
+		//
+		
+		
+		/*----------------------------
+		 * 2. Add listeners => OnTouch
+			----------------------------*/
+		//
+		Button btn_ok = (Button) dlg.findViewById(R.id.dlg_create_table_btn_create);
+		Button btn_cancel = (Button) dlg.findViewById(R.id.dlg_create_table_btn_cancel);
+		
+		//
+		btn_ok.setTag(DialogTags.dlg_create_table_create);
+		btn_cancel.setTag(DialogTags.dlg_create_table_cancel);
+		
+		//
+		btn_ok.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		
+		/*----------------------------
+		 * 3. Add listeners => OnClick
+			----------------------------*/
+		//
+		btn_ok.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		
+		
+		//
+		dlg.show();
+		
+	}//public static void dlg_createTable(Activity actv)
+
+
+	public static void createTable_FromDialog(Activity actv, Dialog dlg, String tableName, String[] columns, String[] types) {
+		/*----------------------------
+		 * Steps
+		 * 1. DBManager
+		 * 2. Table exists?
+		 * 3. Create table
+			----------------------------*/
+		// 
+		DBManager dbm = new DBManager(actv);
+		
+		SQLiteDatabase db = dbm.getWritableDatabase();
+		
+		/*----------------------------
+		 * 2. Table exists?
+			----------------------------*/
+		if (dbm.tableExists(db, tableName)) {
+			//
+//			dbm.createTable(db, tableName);
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table exists => " + tableName);
+
+			return;
+		}//if (dbm.tableExists(db, tableName))
+		
+		/*----------------------------
+		 * 3. Create table
+			----------------------------*/
+		boolean result = dbm.createTable_generic(db, tableName, columns, types);
+		
+		if (result == true) {
+			// debug
+			Toast.makeText(actv, "Table created => " + tableName, 3000).show();
+			
+			//
+			dlg.dismiss();
+			
+		} else {//if (result == true)
+			// debug
+			Toast.makeText(actv, "Create table => failed: " + tableName, 3000).show();
+		}//if (result == true)
+		
+		
+		
+	}//public static void createTable_FromDialog(Activity actv, Dialog dlg)
+
+
+	public static void dlg_createTable_isInputEmpty(Activity actv, Dialog dlg) {
+		/*----------------------------
+		 * Steps
+		 * 1. Get views
+		 * 2. Prepare data
+		 * 3. Data valid?
+		 * 4. Send data to other method
+			----------------------------*/
+		
+		// Get views
+		EditText et_table_name = (EditText) dlg.findViewById(R.id.dlg_create_table_et_table_name);
+		EditText et_column_name = (EditText) dlg.findViewById(R.id.dlg_create_table_et_column_name);
+		EditText et_data_type = (EditText) dlg.findViewById(R.id.dlg_create_table_et_data_type);
+		
+		if (et_table_name.getText().length() == 0 ||
+			et_column_name.getText().length() == 0 ||
+			et_data_type.getText().length() == 0
+				) {
+			// debug
+			Toast.makeText(actv, "Empty box", 3000).show();
+			
+			return;
+		} else {//if (et_column_name.getText().length() == 0)
+			// debug
+			Toast.makeText(actv, "Input complete", 3000).show();
+			
+//			dlg.dismiss();
+		}//if (et_column_name.getText().length() == 0)
+		
+		/*----------------------------
+		 * 2. Prepare data
+			----------------------------*/
+		//
+		String[] columns = et_column_name.getText().toString().split(" ");
+		String[] types = et_data_type.getText().toString().split(" ");
+		
+		/*----------------------------
+		 * 3. Data valid?
+			----------------------------*/
+		if (columns.length != types.length) {
+			// debug
+			Toast.makeText(actv, "Columns and data types don't match", 3000).show();
+			
+			return;
+		}//if (columns.length != types.length)
+		
+		/*----------------------------
+		 * 4. Send data to other method
+			----------------------------*/
+		createTable_FromDialog(actv, dlg, et_table_name.getText().toString(), columns, types);
+		
+		
+	}//public static void dlg_createTable_isInputEmpty(Activity actv, Dialog dlg)
+
+
+	public static void dlg_dropTable(Activity actv) {
+		/*----------------------------
+		 * Steps
+		 * 1. Dialog
+		 * 		1.1. Set up
+		 * 		1.2. OnTouch
+		 * 		1.3. OnClick
+		 * 2. Adapter
+		 * 		2.1. Prepare data
+		 * 		2.2. Create adapter
+		 * 3. ListView
+		 * 		3.1 Get view
+		 * 		3.2. Set adapter to list view
+		 * 		3.3. Set listener to list view
+		 * 		1.5. OnListItem
+		 * 4. Set listener to list view
+		 * 5. Show dialog
+			----------------------------*/
+		// 
+		Dialog dlg = new Dialog(actv);
+		
+		//
+		dlg.setContentView(R.layout.dlg_drop_table);
+		
+		// Title
+		dlg.setTitle(R.string.dlg_drop_table_title);
+		
+		
+		
+		// Width
+//		android.view.WindowManager.LayoutParams params 
+//												= dlg.getWindow().getAttributes();
+//		
+//		params.width = 350;
+//
+//		dlg.getWindow().setAttributes(params);
+		/*----------------------------
+		 * 1.2. Add listeners => OnTouch
+			----------------------------*/
+		//
+		Button btn_cancel = (Button) dlg.findViewById(R.id.dlg_drop_table_btn_cancel);
+		
+		//
+		btn_cancel.setTag(DialogTags.dlg_drop_table_btn_cancel);
+		
+		//
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		
+		/*----------------------------
+		 * 1.3. Add listeners => OnClick
+			----------------------------*/
+		//
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		
+		
+		/*----------------------------
+		 * 2. Adapter
+			----------------------------*/
+		// 
+		DBManager dbm = new DBManager(actv);
+		
+		SQLiteDatabase db = dbm.getWritableDatabase();
+
+		//=> source: http://stackoverflow.com/questions/4681744/android-get-list-of-tables : "Just had to do the same. This seems to work:"
+		String q = "SELECT name FROM " + "sqlite_master"+
+						" WHERE type = 'table' ORDER BY name";
+		
+		Cursor c = null;
+		try {
+			c = db.rawQuery(q, null);
+		} catch (Exception e) {
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Exception => " + e.toString());
+		}
+		
+		// Table names list
+		List<String> tableList = new ArrayList<String>();
+		
+		// Log
+		if (c != null) {
+			c.moveToFirst();
+			
+			for (int i = 0; i < c.getCount(); i++) {
+				// Log
+				Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "c.getString(0) => " + c.getString(0));
+				
+				//
+				tableList.add(c.getString(0));
+				
+				// Next
+				c.moveToNext();
+				
+			}//for (int i = 0; i < c.getCount(); i++)
+
+		} else {//if (c != null)
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c => null");
+		}//if (c != null)
+		
+		
+		db.close();
+		
+		// Adapter
+		adapter = new ArrayAdapter<String>(
+						actv,
+						android.R.layout.simple_list_item_1, 
+						tableList
+				);
+		
+		/*----------------------------
+		 * 3. ListView
+			----------------------------*/
+		ListView lv = (ListView) dlg.findViewById(R.id.dlg_drop_lv_table_list);
+		
+		// Set adapter
+		lv.setAdapter(adapter);
+		
+		
+//		LayoutParams params = lv.getLayoutParams();
+//		
+//		params.width = 100;
+//		
+//		lv.setLayoutParams(params);
+		
+		/*----------------------------
+		 * 4. Set listener to list view
+			----------------------------*/
+//		lv.setOnItemClickListener(new DialogOnItemClickListener(actv, dlg));
+		lv.setOnItemClickListener(new DialogOnItemClickListener(actv, dlg, DialogTags.dlg_drop_table));
+		
+		
+		
+		/*----------------------------
+		 * 5. Show dialog
+			----------------------------*/
+		dlg.show();
+		
+	}//public static void dlg_dropTable(Activity actv)
+
+
+	public static void dlg_confirmTableDrop(Activity actv, Dialog dlg, String tableName) {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up dialog
+		 * 2. Set table name to view
+		 * 3. Set listener => onTouch
+			----------------------------*/
+		
+		// 
+		Dialog dlg2 = new Dialog(actv);
+		
+		//
+		dlg2.setContentView(R.layout.dlg_confirm_drop_table);
+		
+		// Title
+		dlg2.setTitle(R.string.generic_title_reconfirm);
+		
+		/*----------------------------
+		 * 2. Set table name to view
+			----------------------------*/
+		//
+//		TextView tv_table_name = (TextView) actv.findViewById(R.id.dlg_confirm_drop_table_tv_table_name);
+		TextView tv_table_name = (TextView) dlg2.findViewById(R.id.dlg_confirm_drop_table_tv_table_name);
+		
+		tv_table_name.setText(tableName);
+
+		/*----------------------------
+		 * 3. Set listener => onTouch
+			----------------------------*/
+		// Buttons
+		Button btn_ok = (Button) dlg2.findViewById(R.id.dlg_confirm_drop_table_btn_ok);
+		Button btn_cancel = (Button) dlg2.findViewById(R.id.dlg_confirm_drop_table_btn_cancel);
+		
+		// Tags
+		btn_ok.setTag(DialogTags.dlg_confirm_drop_table_btn_ok);
+		btn_cancel.setTag(DialogTags.dlg_confirm_drop_table_btn_cancel);
+		
+		// Set
+		btn_ok.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		
+		
+		dlg2.show();
+		
+	}//public static void dlg_confirmTableDrop
 }

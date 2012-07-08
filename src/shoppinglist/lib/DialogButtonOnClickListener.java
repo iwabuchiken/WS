@@ -134,6 +134,22 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			
 			break;
 			
+		case dlg_create_table_create:
+			//
+			Methods.dlg_createTable_isInputEmpty(actv, dlg);
+			
+//			Methods.createTable_FromDialog(actv, dlg);
+			
+			break;
+			
+		case dlg_create_table_cancel:
+			dlg.dismiss();
+			
+			break;
+
+		case dlg_drop_table_btn_cancel:
+			dlg.dismiss();
+			break;
 		}//switch (tag_name)
 	}
 

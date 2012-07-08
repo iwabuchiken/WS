@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".RegisterItem"></activity>
         <activity android:name=".ItemList"></activity>
+        <activity android:name=".DBAdminActivity"></activity>
     </application>
 
 </manifest>

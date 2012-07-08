@@ -43,6 +43,19 @@
     <string name="generic_message_register">登録してよろしいですか？</string>
     <string name="dlg_reconfirm_genre_name">ジャンル名</string>
     <string name="generic_title_reconfirm">確認</string>
+    <string name="generic_label_create">作成</string>
+    
+    <string name="db_manager_btn_create_table">テーブル作成</string>
+    <string name="db_manager_btn_drop_table">テーブル削除</string>
+    <string name="v1_menu_db_manager">データベース</string>
+    
+    <!-- db_manager.xml -->
+    <string name="dlg_create_table_title">テーブル作成</string>
+    <string name="dlg_create_table_label_column_name">カラム名</string>
+    <string name="dlg_create_table_label_data_type">データ・タイプ</string>
+    <string name="dlg_create_table_label_table_name">テーブル名</string>
+    <string name="dlg_drop_table_title">テーブル削除</string>
+    <string name="dlg_confirm_drop_table_tv_message_drop">このテーブルを削除しますか？</string>
 
     
 </resources>

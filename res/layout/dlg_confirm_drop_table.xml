@@ -29,7 +29,8 @@
         android:gravity="center"
         
         >
-
+		
+		<!-- Table name -->
         <TextView
             android:id="@+id/dlg_confirm_drop_table_tv_table_name"
             android:layout_width="wrap_content"
@@ -37,6 +38,9 @@
              
             android:textColor="@color/yello"
             android:textSize="25dp"
+            
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             />
 
     </LinearLayout>
@@ -56,6 +60,8 @@
             android:layout_weight="1"
             
             android:text="@string/generic_ok" 
+            android:textSize="25dp"
+            android:textColor="@color/blue1"
             
             android:layout_marginLeft="5dp"
             android:layout_marginRight="2dp"
@@ -71,6 +77,8 @@
             android:layout_weight="1"
             
             android:text="@string/generic_cancel" 
+            android:textSize="25dp"
+            android:textColor="@color/red"
             
             android:layout_marginLeft="2dp"
             android:layout_marginRight="5dp"

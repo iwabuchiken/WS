@@ -995,6 +995,9 @@ public class Methods {
 		 * 1. Set up dialog
 		 * 2. Set table name to view
 		 * 3. Set listener => onTouch
+		 * 4. Set listener => Cancel
+		 * 5. Set listener => Drop
+		 * 6. Show dialog
 			----------------------------*/
 		
 		// 
@@ -1030,8 +1033,78 @@ public class Methods {
 		btn_ok.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
 		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
 		
+		/*----------------------------
+		 * 4. Set listener => Cancel
+			----------------------------*/
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg, dlg2));
 		
+		/*----------------------------
+		 * 5. Set listener => Drop
+			----------------------------*/
+		btn_ok.setOnClickListener(new DialogButtonOnClickListener(actv, dlg, dlg2));
+		
+		/*----------------------------
+		 * 6. Show dialog
+			----------------------------*/
 		dlg2.show();
 		
 	}//public static void dlg_confirmTableDrop
+
+
+	public static void dropTable(Activity actv, Dialog dlg) {
+		/*----------------------------
+		 * Steps
+		 * 1. Get table name
+		 * 2. Open db
+		 * 3. Drop table
+		 * 4. Dismiss dialog
+		 * 5. Close db
+			----------------------------*/
+		
+		// 
+		TextView tv_table_name = (TextView) dlg.findViewById(R.id.dlg_confirm_drop_table_tv_table_name);
+		
+		String tableName = tv_table_name.getText().toString();
+		
+		// 
+		DBManager dbm = new DBManager(actv);
+		
+		SQLiteDatabase db = dbm.getWritableDatabase();
+
+		boolean result = dbm.dropTable(actv, db, tv_table_name.getText().toString());
+		
+		if (result == true) {
+			// debug
+			Toast.makeText(actv, "Table dropped => " + tableName, 3000).show();
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table dropped => " + tableName);
+			
+		} else {//if (result == true)
+			// debug
+			Toast.makeText(actv, "Drop table => Failed: " + tableName, 3000).show();
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Drop table => Failed: " + tableName);
+			
+		}//if (result == true)
+		
+		/*----------------------------
+		 * 4. Dismiss dialog
+			----------------------------*/
+		dlg.dismiss();
+		
+		db.close();
+		
+		// Log
+		Log.d("Methods.java" + "["
+				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ "]", "db => Closed");
+		
+		
+	}//public static void dropTable(Activity actv, Dialog dlg)
 }

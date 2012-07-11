@@ -50,6 +50,8 @@ public class DialogButtonOnTouchListener implements OnTouchListener {
 				case dlg_create_table_create:
 				case dlg_create_table_cancel:
 				case dlg_drop_table_btn_cancel:
+				case dlg_confirm_drop_table_btn_ok:
+				case dlg_confirm_drop_table_btn_cancel:
 					//
 					v.setBackgroundColor(Color.GRAY);
 					
@@ -75,6 +77,8 @@ public class DialogButtonOnTouchListener implements OnTouchListener {
 				case dlg_create_table_create:
 				case dlg_create_table_cancel:
 				case dlg_drop_table_btn_cancel:
+				case dlg_confirm_drop_table_btn_ok:
+				case dlg_confirm_drop_table_btn_cancel:
 					//
 					v.setBackgroundColor(Color.WHITE);
 					

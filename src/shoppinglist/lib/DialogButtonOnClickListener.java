@@ -3,6 +3,7 @@ package shoppinglist.lib;
 import shoppinglist.main.R;
 import android.app.Activity;
 import android.app.Dialog;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -17,10 +18,16 @@ public class DialogButtonOnClickListener implements OnClickListener {
 	Dialog dlg;
 	Dialog dlg2;		//=> Used in dlg_input_empty_btn_XXX
 
+	//
+	Vibrator vib;
+	
 	public DialogButtonOnClickListener(Activity actv, Dialog dlg) {
 		//
 		this.actv = actv;
 		this.dlg = dlg;
+		
+		//
+		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
 	}
 
 	public DialogButtonOnClickListener(Activity actv, Dialog dlg1,
@@ -29,6 +36,9 @@ public class DialogButtonOnClickListener implements OnClickListener {
 		this.actv = actv;
 		this.dlg = dlg1;
 		this.dlg2 = dlg2;
+		
+		//
+		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
 	}
 
 	@Override
@@ -43,6 +53,9 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			 * Validate if the edit view has some input.
 			 * If no input => Show another dialog
 				----------------------------*/
+			//
+			vib.vibrate(40);
+			
 			//
 			EditText et = (EditText) dlg.findViewById(R.id.dlg_register_store_et);
 			
@@ -60,11 +73,17 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			
 		case dlg_register_store_cancel:
 			//
+			vib.vibrate(40);
+			
+			//
 			dlg.dismiss();
 			
 			break;
 			
 		case dlg_input_empty_btn_reenter:
+			//
+			vib.vibrate(40);
+			
 			//
 			dlg2.dismiss();
 			
@@ -72,12 +91,18 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			
 		case dlg_input_empty_btn_cancel:
 			//
+			vib.vibrate(40);
+			
+			//
 			dlg2.dismiss();
 			dlg.dismiss();
 			
 			break;
 			
 		case dlg_reconfirm_store_name_btn_yes:
+			//
+			vib.vibrate(40);
+			
 //			//
 //			et object = (et) findViewById(arguement);
 //			
@@ -86,10 +111,16 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			break;
 			
 		case dlg_reconfirm_store_name_btn_cancel:
+			//
+			vib.vibrate(40);
+			
 			dlg2.dismiss();
 			break;
 
 		case dlg_register_genre_cancel:
+			//
+			vib.vibrate(40);
+			
 			dlg.dismiss();
 			break;
 			
@@ -98,6 +129,9 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			 * Validate if the edit view has some input.
 			 * If no input => Show another dialog
 				----------------------------*/
+			//
+			vib.vibrate(40);
+			
 			//
 			et = (EditText) dlg.findViewById(R.id.dlg_register_genre_et);
 			
@@ -121,6 +155,8 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			
 		// dlg_reconfirm_genre_name.xml
 		case dlg_reconfirm_genre_name_btn_register:
+			//
+			vib.vibrate(40);
 			
 			Methods.registerGenreName_final(actv, dlg, dlg2, "genres");
 			
@@ -130,11 +166,17 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			break;
 			
 		case dlg_reconfirm_genre_name_btn_cancel:
+			//
+			vib.vibrate(40);
+			
 			dlg2.dismiss();
 			
 			break;
 			
 		case dlg_create_table_create:
+			//
+			vib.vibrate(40);
+			
 			//
 			Methods.dlg_createTable_isInputEmpty(actv, dlg);
 			
@@ -143,12 +185,38 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			break;
 			
 		case dlg_create_table_cancel:
+			//
+			vib.vibrate(40);
+			
 			dlg.dismiss();
 			
 			break;
 
 		case dlg_drop_table_btn_cancel:
+			//
+			vib.vibrate(40);
+			
 			dlg.dismiss();
+			break;
+			
+		case dlg_confirm_drop_table_btn_cancel:
+			//
+			vib.vibrate(40);
+			
+			dlg2.dismiss();
+			dlg.dismiss();
+			
+			break;
+			
+		case dlg_confirm_drop_table_btn_ok:
+			//
+			vib.vibrate(40);
+			
+			// Dismiss the first dialog
+			dlg.dismiss();
+			
+			// Call the method; Pass the second dialog
+			Methods.dropTable(actv, dlg2);
 			break;
 		}//switch (tag_name)
 	}

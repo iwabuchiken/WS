@@ -1,10 +1,12 @@
 package shoppinglist.lib;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import shoppinglist.main.DBManager;
 import shoppinglist.main.R;
+import shoppinglist.main.RegisterItem;
 import android.app.Activity;
 import android.app.Dialog;
 import android.database.Cursor;
@@ -17,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +56,9 @@ public class Methods {
 		
 		// dlg_confirm_drop_table.xml
 		dlg_confirm_drop_table_btn_ok, dlg_confirm_drop_table_btn_cancel, dlg_confirm_drop_table,
+
+		// dlg_filter_list.xml
+		dlg_filter_list_ok, dlg_filter_list_cancel,
 		
 	}//public static enum DialogTags
 	
@@ -1107,4 +1113,144 @@ public class Methods {
 		
 		
 	}//public static void dropTable(Activity actv, Dialog dlg)
+
+
+	public static void dlg_filterList(Activity actv) {
+		/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 2. Prepare data for spinners
+		 * 		2.1. Stores
+		 * 		2.2. Genres
+		 * 		2.3. Close db
+		 * 3. Set data to adapter
+		 * 4. Adapter to spinner
+		 * 5. Set listeners
+		 * 		5.1. Touch
+		 * 		5.2. Click
+		 * 9. Show dialog
+			----------------------------*/
+		
+		// 
+		Dialog dlg = new Dialog(actv);
+		
+		//
+		dlg.setContentView(R.layout.dlg_filter_list);
+		
+		// Title
+		dlg.setTitle(R.string.dlg_filter_list_tv_title);
+		
+		/*----------------------------
+		 * 2. Prepare data for spinners
+			----------------------------*/
+		/*----------------------------
+		 * 2.1. Stores
+			----------------------------*/
+		List<String> storeList = new ArrayList<String>();
+		
+		DBManager dbm = new DBManager(actv);
+		
+		SQLiteDatabase db = dbm.getReadableDatabase();
+		
+		Cursor c = dbm.getAllData(db, "stores", DBManager.columns_for_table_stores_with_index);
+		
+		// All
+		storeList.add(actv.getString(R.string.generic_label_all));
+		
+		//
+		c.moveToFirst();
+		
+		for (int i = 0; i < c.getCount(); i++) {
+			//
+			storeList.add(c.getString(1));
+			
+			//
+			c.moveToNext();
+		}//for (int i = 0; i < c.getCount(); i++)
+		
+		/*----------------------------
+		 * 2.2. Genres
+			----------------------------*/
+		List<String> genreList = new ArrayList<String>();
+		
+		c = dbm.getAllData(db, "genres", DBManager.columns_for_table_genres_with_index);
+		
+		// All
+		genreList.add(actv.getString(R.string.generic_label_all));
+		
+		//
+		c.moveToFirst();
+		
+		for (int i = 0; i < c.getCount(); i++) {
+			//
+			genreList.add(c.getString(1));
+			
+			//
+			c.moveToNext();
+		}//for (int i = 0; i < c.getCount(); i++)
+		
+		/*----------------------------
+		 * 2.3. Close db
+			----------------------------*/
+		db.close();
+		
+		/*----------------------------
+		 * 3. Set data to adapter
+			----------------------------*/
+		// Stores
+		ArrayAdapter<String> adapterStore = new ArrayAdapter<String>(
+	              actv, android.R.layout.simple_spinner_item, storeList);
+		
+		// Stores
+		ArrayAdapter<String> adapterGenre = new ArrayAdapter<String>(
+	              actv, android.R.layout.simple_spinner_item, genreList);
+		
+		// Drop down view
+		adapterStore.setDropDownViewResource(
+				android.R.layout.simple_spinner_dropdown_item);
+		
+		adapterGenre.setDropDownViewResource(
+				android.R.layout.simple_spinner_dropdown_item);
+		
+		/*----------------------------
+		 * 4. Adapter to spinner
+			----------------------------*/
+		//
+		Spinner spStore = (Spinner) dlg.findViewById(R.id.dlg_filter_list_sp_store);
+		Spinner spGenre = (Spinner) dlg.findViewById(R.id.dlg_filter_list_sp_genre);
+		
+		spStore.setAdapter(adapterStore);
+		spGenre.setAdapter(adapterGenre);
+		
+		/*----------------------------
+		 * 5. Set listeners
+			----------------------------*/
+		/*----------------------------
+		 * 5.1. Touch
+			----------------------------*/
+		// View
+		Button btn_ok = (Button) dlg.findViewById(R.id.dlg_filter_list_bt_ok);
+		Button btn_cancel = (Button) dlg.findViewById(R.id.dlg_filter_list_bt_cancel);
+		
+		// Tags
+		btn_ok.setTag(DialogTags.dlg_filter_list_ok);
+		btn_cancel.setTag(DialogTags.dlg_filter_list_cancel);
+		
+		// Set
+		btn_ok.setOnTouchListener(new DialogButtonOnTouchListener(actv));
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv));
+		
+		/*----------------------------
+		 * 5.2. Click
+			----------------------------*/
+		// 
+		btn_ok.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		
+		/*----------------------------
+		 * 9. Show dialog
+			----------------------------*/
+		dlg.show();
+		
+	}//public static void dlg_filterList(Activity actv)
 }

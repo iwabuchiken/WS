@@ -44,6 +44,7 @@
     <string name="dlg_reconfirm_genre_name">ジャンル名</string>
     <string name="generic_title_reconfirm">確認</string>
     <string name="generic_label_create">作成</string>
+    <string name="generic_label_all">すべて</string>
     
     <string name="db_manager_btn_create_table">テーブル作成</string>
     <string name="db_manager_btn_drop_table">テーブル削除</string>
@@ -56,6 +57,15 @@
     <string name="dlg_create_table_label_table_name">テーブル名</string>
     <string name="dlg_drop_table_title">テーブル削除</string>
     <string name="dlg_confirm_drop_table_tv_message_drop">このテーブルを削除しますか？</string>
+    
+    <!-- ItemList.java -->
+    <string name="menu_listitem_filter">フィルター</string>
+    
+    <!-- dlg_filter_list.xml -->
+    <string name="dlg_filter_list_tv_title">フィルター</string>
+    <string name="dlg_filter_list_tv_store">店舗</string>
+    <string name="dlg_filter_list_tv_genre">ジャンル</string>
+    <string name="dlg_filter_list_tv_history">フィルター履歴</string>
 
     
 </resources>

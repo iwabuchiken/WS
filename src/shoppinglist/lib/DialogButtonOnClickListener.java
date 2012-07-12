@@ -218,6 +218,21 @@ public class DialogButtonOnClickListener implements OnClickListener {
 			// Call the method; Pass the second dialog
 			Methods.dropTable(actv, dlg2);
 			break;
+			
+		case dlg_filter_list_cancel:
+			
+			dlg.dismiss();
+			
+			break;
+
+		case dlg_filter_list_ok:
+			
+			
+			
+			break;
+			
+		default:
+			break;
 		}//switch (tag_name)
 	}
 

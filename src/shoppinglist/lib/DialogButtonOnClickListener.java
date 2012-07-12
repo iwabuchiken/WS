@@ -227,7 +227,7 @@ public class DialogButtonOnClickListener implements OnClickListener {
 
 		case dlg_filter_list_ok:
 			
-			
+			Methods.filterList(actv, dlg);
 			
 			break;
 			

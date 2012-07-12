@@ -21,10 +21,10 @@ import android.widget.Toast;
 public class ItemList extends ListActivity {
 
 	//
-	static List<ShoppingItem> list;
+	public static List<ShoppingItem> list;
 	
 	//
-	static ItemListAdapter adapter;
+	public static ItemListAdapter adapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

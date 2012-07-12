@@ -25,7 +25,7 @@ public class DBManager extends SQLiteOpenHelper {
 	Context context;
 	
 	//
-	static String tableName = "shopping_item";
+	public static String tableName = "shopping_item";
 
 	static String[] columns = {"store", "name", "price", "genre"};
 	static String[] columns_with_index = 

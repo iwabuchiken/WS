@@ -1,8 +1,3 @@
-copy ..\ImageFileManager6\.gitignore .
-
-g init
-g a .
-
 a
 cd C:\WORKS\WORKSPACES_ANDROID\ShoppingList
 C:\WORKS\WORKSPACES_ANDROID\FM\a
@@ -12,14 +7,19 @@ gitk
 C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\ShoppingList.mm
 C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WORKSPACES_ANDROID\FM\Activity_log.mm
 
-a
-
-
+copy ..\ImageFileManager6\.gitignore .
 
 [Git]
+g init
+g a .
+
 git log --grep=B4 -3
 git log --grep=B5 -3
 
 
 [Git for mm]
 pushd C:\WORKS\WORKSPACES_ANDROID\FM
+
+[svn]
+pushd C:\WORKS\WORKSPACES_ANDROID\Sample\05_Techbooster
+svn co https://techbooster.googlecode.com/svn/trunk/ContextMenu/ ContextMenu

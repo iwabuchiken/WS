@@ -5,11 +5,15 @@
     <string name="app_name">ShoppingList</string>
     <string name="v1_menu_1">Option 1</string>
     <string name="v1_menu_register_item">品物登録</string>
-    <string name="v1_tv_item">品名</string>
-    <string name="v1_tv_store">お店</string>
-    <string name="v1_tv_price">価格</string>
-    <string name="v1_tv_genre">ジャンル</string>
-    <string name="v1_btn_register">登録</string>
+    
+    <!-- registeritem.xml -->
+	    <string name="v1_tv_item">品名</string>
+	    <string name="v1_tv_store">お店</string>
+	    <string name="v1_tv_price">価格</string>
+	    <string name="v1_tv_genre">ジャンル</string>
+	    <string name="v1_tv_yomi">よみ</string>
+	    <string name="v1_btn_register">登録</string>
+    
     <string name="v1_menu_item_list">品物リスト</string>
     
     <string name="adapteritem_tv_item_name">品物リスト</string>

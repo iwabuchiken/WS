@@ -130,6 +130,9 @@ public class RegisterItem extends Activity {
 				
 				EditText et_name = (EditText) findViewById(R.id.v1_et_name);
 				EditText et_price = (EditText) findViewById(R.id.v1_et_price);
+				
+				EditText et_yomi = (EditText) findViewById(R.id.v1_et_yomi);
+//				
 //				EditText et_genre = (EditText) findViewById(R.id.v1_et_genre);
 				
 				// All written?
@@ -152,6 +155,13 @@ public class RegisterItem extends Activity {
 								sp_store_name.getSelectedItem().toString() +
 								" / " + "position => " + sp_store_name.getSelectedItemPosition());
 				
+//				//
+//				String yomi;
+//				if (condition) {
+//					line1
+//				} else {//if (condition)
+//					line2
+//				}//if (condition)
 				
 				
 				//
@@ -166,8 +176,11 @@ public class RegisterItem extends Activity {
 								new String[]{
 //										et_store.getText().toString(),
 										sp_store_name.getSelectedItem().toString(),
+										
 										et_name.getText().toString(),
+										et_yomi.getText().toString(),
 										et_price.getText().toString(),
+										
 //										et_genre.getText().toString()
 										sp_genre_name.getSelectedItem().toString()
 								});

@@ -1,20 +1,106 @@
 package shoppinglist.main;
 
+import shoppinglist.lib.ButtonOnClickListener;
+import shoppinglist.lib.ButtonOnTouchListener;
 import shoppinglist.lib.Methods;
+
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class ShoppingListActivity extends ListActivity {
+//public class ShoppingListActivity extends ListActivity {
+public class ShoppingListActivity extends Activity {
+	
+	public static Vibrator vib;
+	
+//	public static String[] registerItems = {"•i•¨", "“X•Ü", "ƒWƒƒƒ“ƒ‹"};
+	
+//	public static enum registerChoice = {
+	public static enum registerChoice {
+		items, stores, genres,
+	};
+			
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	/*----------------------------
+		 * Steps
+		 * 1. Set up
+		 * 		1. super
+		 * 		2. Content view
+		 * 		3. vib
+		 * 2. Add listeners
+			----------------------------*/
+		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppinglist);
+        
+        vib = (Vibrator) this.getSystemService(this.VIBRATOR_SERVICE);
+        
+        /*----------------------------
+		 * 2. Add listeners
+			----------------------------*/
+		add_listeners();
+        
+        
     }//public void onCreate(Bundle savedInstanceState)
+
+	private void add_listeners() {
+		/*----------------------------
+		 * Steps
+		 * 1. tv_list
+		 * 2. tv_register
+		 * 3. tv_db
+			----------------------------*/
+		
+		// 
+		TextView tv_list = (TextView) findViewById(R.id.sl_tv_item_list);
+		
+		
+		
+		tv_list.setTag(Methods.ButtonTags.sl_main_bt_item_list);
+		
+		tv_list.setOnTouchListener(new ButtonOnTouchListener(this));
+		tv_list.setOnClickListener(new ButtonOnClickListener(this));
+		
+		/*----------------------------
+		 * 2. tv_register
+			----------------------------*/
+		TextView tv_register = (TextView) findViewById(R.id.sl_tv_register);
+		
+		tv_register.setTag(Methods.ButtonTags.sl_main_bt_register);
+		
+		tv_register.setOnTouchListener(new ButtonOnTouchListener(this));
+		tv_register.setOnClickListener(new ButtonOnClickListener(this));
+		
+		/*----------------------------
+		 * 3. tv_db
+			----------------------------*/
+		TextView tv_db = (TextView) findViewById(R.id.sl_tv_db);
+		
+		tv_db.setTag(Methods.ButtonTags.sl_main_bt_db);
+		
+		tv_db.setOnTouchListener(new ButtonOnTouchListener(this));
+		tv_db.setOnClickListener(new ButtonOnClickListener(this));
+		
+//		Methods.setOnTouchListener_button(this, Methods.ViewNames.TV, 
+//				Methods.ButtonTags.sl_main_bt_item_list, R.id.sl_tv_item_list);
+//		
+//		Methods.setOnTouchListener_button(this, Methods.ViewNames.TV, 
+//				Methods.ButtonTags.sl_main_bt_register, R.id.sl_tv_register);
+//		
+//		Methods.setOnTouchListener_button(this, Methods.ViewNames.TV, 
+//				Methods.ButtonTags.sl_main_bt_db, R.id.sl_tv_db);
+		
+		
+	}//private void add_listeners()
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

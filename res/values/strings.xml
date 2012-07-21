@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- generic -->
+	    <string name="generic_register">登録</string>
+	    <string name="generic_ok">OK</string>
+	    <string name="generic_cancel">キャンセル</string>
+	    <string name="generic_message_register">登録してよろしいですか？</string>
+	    <string name="dlg_reconfirm_genre_name">ジャンル名</string>
+	    <string name="generic_title_reconfirm">確認</string>
+	    <string name="generic_label_create">作成</string>
+	    <string name="generic_label_all">すべて</string>
+    
+    
     <string name="hello">Hello World, ShoppingListActivity!</string>
     <string name="app_name">ShoppingList</string>
     <string name="v1_menu_1">Option 1</string>
@@ -41,15 +52,6 @@
     <string name="dlg_register_genre_message">ジャンルの名前をどうぞ</string>
     <string name="dlg_register_genre_title">ジャンル登録</string>
     
-    <string name="generic_register">登録</string>
-    <string name="generic_ok">OK</string>
-    <string name="generic_cancel">キャンセル</string>
-    <string name="generic_message_register">登録してよろしいですか？</string>
-    <string name="dlg_reconfirm_genre_name">ジャンル名</string>
-    <string name="generic_title_reconfirm">確認</string>
-    <string name="generic_label_create">作成</string>
-    <string name="generic_label_all">すべて</string>
-    
     <string name="db_manager_btn_create_table">テーブル作成</string>
     <string name="db_manager_btn_drop_table">テーブル削除</string>
     <string name="v1_menu_db_manager">データベース</string>
@@ -71,5 +73,14 @@
     <string name="dlg_filter_list_tv_genre">ジャンル</string>
     <string name="dlg_filter_list_tv_history">フィルター履歴</string>
 
+    <!-- shoppinglist.xml -->
+    	<string name="sl_tv_item_list">品物リスト</string>
+    	<string name="sl_tv_item_register">登録</string>
+    	<string name="sl_tv_item_db">データベース</string>
     
+    <!-- dlg_register_main.xml -->
+    	<string name="dlg_register_main_items">品物</string>
+    	<string name="dlg_register_main_stores">店舗</string>
+    	<string name="dlg_register_main_genres">ジャンル</string>
+    	
 </resources>

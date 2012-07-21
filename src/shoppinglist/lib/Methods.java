@@ -11,11 +11,13 @@ import shoppinglist.main.ItemList;
 import shoppinglist.main.R;
 import shoppinglist.main.RegisterItem;
 import shoppinglist.main.ShoppingItem;
+import shoppinglist.main.ShoppingListActivity;
 import android.app.Activity;
 import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 //import android.view.WindowManager.LayoutParams;
@@ -31,12 +33,17 @@ public class Methods {
 
 	//
 	static ArrayAdapter<String> adapter;		//=> Used in: public static void dlg_dropTable(Activity actv)
+
+	public static int vibLength = 35;
 	
 	/*----------------------------
 	 * Variables
 		----------------------------*/
 	//
 	public static enum DialogTags {
+		// dlg_generic
+		dlg_generic_cancel,
+		
 		// dlg_register_store.xml
 		dlg_register_store_ok, dlg_register_store_cancel,
 
@@ -64,13 +71,23 @@ public class Methods {
 		// dlg_filter_list.xml
 		dlg_filter_list_ok, dlg_filter_list_cancel,
 		
+		// dlg_register_main.xml
+		dlg_register_main,
+		
 	}//public static enum DialogTags
 	
 	public static enum ButtonTags {
 		// DBAdminActivity.java
 		db_manager_activity_create_table, db_manager_activity_drop_table,
+
+		// ShoppingList.java
+		sl_main_bt_item_list, sl_main_bt_register, sl_main_bt_db,
 		
 	}//public static enum ButtonTags
+
+	public static enum ViewNames {
+		TV, BT,
+	}
 	
 	public static void register_store(Activity actv) {
 		/*----------------------------
@@ -1405,4 +1422,177 @@ public class Methods {
 		ItemList.adapter.sort(cmp);
 		
 	}//public static void filterList(Activity actv, Dialog dlg)
+	
+	/****************************************
+	 *
+	 * 
+	 * <Caller> 
+	 * 1. ShoppingList.add_listeners()
+	 * 
+	 *  <Desc> 
+	 *  1. REF=> ChineseReader2\src\cr2\main\Utils.java
+	 *  
+	 *  <Params> 1.
+	 * 
+	 * <Return> 1.
+	 * 
+	 * <Steps> 1.
+	 ****************************************/
+	public static void setOnTouchListener_button(Activity actv, Methods.ViewNames viewName, 
+				Methods.ButtonTags tagName, int resourceId) {
+		//
+	//		if (viewName.equals("tv")) {
+		/*----------------------------
+		 * memo: Second param needs not to be enum. To avoid mistyping,
+		 * 				I decieded to use enum instead of raw string :20120721_182940
+			----------------------------*/
+		
+		if (viewName == Methods.ViewNames.TV) {
+			// Get the view
+			TextView tv = (TextView) actv.findViewById(resourceId);
+			  
+			// Set a tag
+			tv.setTag(tagName);
+			  
+			// Set a listener
+			tv.setOnTouchListener(new ButtonOnTouchListener(actv));
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Listener set => " + tv.toString());
+			
+			
+//		} else if (viewName.equals("bt")) {//if (viewName.equals("textview"))
+		} else if (viewName == Methods.ViewNames.BT) {//if (viewName.equals("textview"))
+			// Get the view
+			Button bt = (Button) actv.findViewById(resourceId);
+			  
+			// Set a tag
+			bt.setTag(tagName);
+			  
+			// Set a listener
+			bt.setOnTouchListener(new ButtonOnTouchListener(actv));
+
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Listener set => " + bt.toString());
+		
+		}//if (viewName.equals("textview"))
+		
+	}//public void setOnTouchListener_button()
+	
+	
+	
+	public static void dlg_register_main(Activity actv) {
+		/*----------------------------
+		 * Steps
+		 * 1. Get a dialog
+		 * 2. List view
+		 * 3. Set listener => list
+		 * 9. Show dialog
+			----------------------------*/
+		 
+		Dialog dlg = dlg_template_cancel(actv, 
+				R.layout.dlg_register_main, R.string.generic_register,
+				R.id.dlg_register_main_btn_cancel, Methods.DialogTags.dlg_generic_cancel);
+		
+		/*----------------------------
+		 * 2. List view
+		 * 		1. Get view
+		 * 		2. Prepare list data
+		 * 		3. Prepare adapter
+		 * 		4. Set adapter
+			----------------------------*/
+		ListView lv = (ListView) dlg.findViewById(R.id.dlg_register_main_lv_list);
+		
+		/*----------------------------
+		 * 2.2. Prepare list data
+			----------------------------*/
+//		List<String> registerItems = new ArrayList<String>();
+		List<ShoppingListActivity.registerChoice> registerItems = 
+					new ArrayList<ShoppingListActivity.registerChoice>();
+		
+		for (ShoppingListActivity.registerChoice item : ShoppingListActivity.registerChoice.values()) {
+			
+			registerItems.add(item);
+			
+		}//for (String string : ShoppingListActivity.registerItems)
+		
+//		ArrayAdapter<String> adp = new ArrayAdapter<String>(
+		ArrayAdapter<ShoppingListActivity.registerChoice> adp = 
+				new ArrayAdapter<ShoppingListActivity.registerChoice>(
+		
+				actv,
+				android.R.layout.simple_list_item_1,
+				registerItems
+		);
+		
+		/*----------------------------
+		 * 2.4. Set adapter
+			----------------------------*/
+		lv.setAdapter(adp);
+		
+		/*----------------------------
+		 * 3. Set listener => list
+			----------------------------*/
+		lv.setOnItemClickListener(
+						new DialogOnItemClickListener(
+								actv, 
+								dlg, 
+								Methods.DialogTags.dlg_register_main));
+		
+		/*----------------------------
+		 * 9. Show dialog
+			----------------------------*/
+		dlg.show();
+		
+	}//public static void dlg_register_main(Activity actv)
+	
+	public static Dialog dlg_template_cancel(Activity actv, 
+			int layoutId, int titleStringId,
+			int cancelButtonId, DialogTags cancelTag) {
+		/*----------------------------
+		* Steps
+		* 1. Set up
+		* 2. Add listeners => OnTouch
+		* 3. Add listeners => OnClick
+		----------------------------*/
+		
+		// 
+		Dialog dlg = new Dialog(actv);
+		
+		//
+		dlg.setContentView(layoutId);
+		
+		// Title
+		dlg.setTitle(titleStringId);
+		
+		/*----------------------------
+		* 2. Add listeners => OnTouch
+		----------------------------*/
+		//
+		Button btn_cancel = (Button) dlg.findViewById(cancelButtonId);
+		
+		//
+		btn_cancel.setTag(cancelTag);
+		
+		//
+		btn_cancel.setOnTouchListener(new DialogButtonOnTouchListener(actv, dlg));
+		
+		/*----------------------------
+		* 3. Add listeners => OnClick
+		----------------------------*/
+		//
+		btn_cancel.setOnClickListener(new DialogButtonOnClickListener(actv, dlg));
+		
+		//
+		//dlg.show();
+		
+		return dlg;
+	
+	}//public static Dialog dlg_template_okCancel()
+
+
 }

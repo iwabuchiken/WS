@@ -43,9 +43,13 @@ public class ButtonOnTouchListener implements OnTouchListener {
 				//
 			case db_manager_activity_create_table:
 			case db_manager_activity_drop_table:
+
 			case sl_main_bt_item_list:
 			case sl_main_bt_register:
 			case sl_main_bt_db:
+				
+			case itemlist_bt_choose:
+			case itemlist_bt_see_chosen:
 				//
 				v.setBackgroundColor(Color.GRAY);
 				
@@ -67,9 +71,14 @@ public class ButtonOnTouchListener implements OnTouchListener {
 				//
 			case db_manager_activity_create_table:
 			case db_manager_activity_drop_table:
+
 			case sl_main_bt_item_list:
 			case sl_main_bt_register:
 			case sl_main_bt_db:
+				
+			case itemlist_bt_choose:
+			case itemlist_bt_see_chosen:
+
 					//
 					v.setBackgroundColor(Color.WHITE);
 					

@@ -3,6 +3,7 @@ package shoppinglist.main;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,8 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
 		 * 2. Get views
 		 * 3. Get item
 		 * 4. Set values
+		 * 
+		 * 5. Set background
 			----------------------------*/
 		
 		// TODO 自動生成されたメソッド・スタブ
@@ -72,6 +75,26 @@ public class ItemListAdapter extends ArrayAdapter<ShoppingItem> {
 		tv_price.setText(String.valueOf(si.getPrice()));
 		
 		tv_genre.setText("(" + si.getGenre() + ")");
+		
+		/*----------------------------
+		 * 5. Set background
+			----------------------------*/
+		if (ItemList.toBuys.contains((Integer) position)) {
+			
+			convertView.setBackgroundColor(Color.GREEN);
+			
+		} else if (ItemList.checkedPositions.contains((Integer) position)) {
+			
+			convertView.setBackgroundColor(Color.BLUE);
+			
+		} else {//if (ItemList.checkedPositions.contains((Integer) position))
+			
+			convertView.setBackgroundColor(Color.BLACK);
+			
+		}//if (ItemList.checkedPositions.contains((Integer) position))
+		
+		
+		
 		
 		return convertView;
 //		return super.getView(position, convertView, parent);

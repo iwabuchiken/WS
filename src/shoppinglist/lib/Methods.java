@@ -83,6 +83,9 @@ public class Methods {
 		// ShoppingList.java
 		sl_main_bt_item_list, sl_main_bt_register, sl_main_bt_db,
 		
+		// itemlist.xml
+		itemlist_bt_choose, itemlist_bt_see_chosen,
+		
 	}//public static enum ButtonTags
 
 	public static enum ViewNames {

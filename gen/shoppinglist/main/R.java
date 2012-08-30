@@ -114,27 +114,29 @@ public final class R {
         public static final int dlg_register_store_et=0x7f080045;
         public static final int dlg_register_store_tv=0x7f080043;
         public static final int itemlist_LL_list=0x7f080049;
-        public static final int menu_listitem_filter=0x7f080059;
-        public static final int sl_tv_db=0x7f080058;
-        public static final int sl_tv_item_list=0x7f080056;
-        public static final int sl_tv_register=0x7f080057;
-        public static final int v1_btn_register=0x7f080055;
-        public static final int v1_et_name=0x7f08004e;
-        public static final int v1_et_price=0x7f080052;
-        public static final int v1_et_yomi=0x7f080050;
-        public static final int v1_menu_add_genre=0x7f08005e;
-        public static final int v1_menu_add_item=0x7f08005b;
-        public static final int v1_menu_db_manager=0x7f08005a;
-        public static final int v1_menu_item_list=0x7f08005c;
-        public static final int v1_menu_register_store=0x7f08005d;
-        public static final int v1_sp_genre=0x7f080054;
-        public static final int v1_sp_store=0x7f08004c;
-        public static final int v1_tl=0x7f08004a;
-        public static final int v1_tv_genre=0x7f080053;
-        public static final int v1_tv_name=0x7f08004d;
-        public static final int v1_tv_price=0x7f080051;
-        public static final int v1_tv_store=0x7f08004b;
-        public static final int v1_tv_yomi=0x7f08004f;
+        public static final int itemlist_bt_choose=0x7f08004a;
+        public static final int itemlist_bt_see_chosen=0x7f08004b;
+        public static final int menu_listitem_filter=0x7f08005b;
+        public static final int sl_tv_db=0x7f08005a;
+        public static final int sl_tv_item_list=0x7f080058;
+        public static final int sl_tv_register=0x7f080059;
+        public static final int v1_btn_register=0x7f080057;
+        public static final int v1_et_name=0x7f080050;
+        public static final int v1_et_price=0x7f080054;
+        public static final int v1_et_yomi=0x7f080052;
+        public static final int v1_menu_add_genre=0x7f080060;
+        public static final int v1_menu_add_item=0x7f08005d;
+        public static final int v1_menu_db_manager=0x7f08005c;
+        public static final int v1_menu_item_list=0x7f08005e;
+        public static final int v1_menu_register_store=0x7f08005f;
+        public static final int v1_sp_genre=0x7f080056;
+        public static final int v1_sp_store=0x7f08004e;
+        public static final int v1_tl=0x7f08004c;
+        public static final int v1_tv_genre=0x7f080055;
+        public static final int v1_tv_name=0x7f08004f;
+        public static final int v1_tv_price=0x7f080053;
+        public static final int v1_tv_store=0x7f08004d;
+        public static final int v1_tv_yomi=0x7f080051;
     }
     public static final class layout {
         public static final int adapteritem=0x7f030000;
@@ -211,6 +213,10 @@ public final class R {
         public static final int generic_register=0x7f050000;
         public static final int generic_title_reconfirm=0x7f050005;
         public static final int hello=0x7f050008;
+        /**  itemlist.xml 
+         */
+        public static final int itemlist_bt_choose=0x7f05003c;
+        public static final int itemlist_bt_see_chosen=0x7f05003d;
         /**  ItemList.java 
          */
         public static final int menu_listitem_filter=0x7f050031;

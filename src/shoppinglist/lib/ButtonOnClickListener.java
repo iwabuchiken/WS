@@ -98,6 +98,14 @@ public class ButtonOnClickListener implements OnClickListener {
 
 			break;
 			
+		case itemlist_bt_choose://-----------------------------------
+			
+			ItemList.toBuys.addAll(ItemList.checkedPositions);
+			
+			ItemList.adapter.notifyDataSetChanged();
+			
+			break;
+			
 		default:
 			break;
 		}//switch (tag_name)

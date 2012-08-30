@@ -83,4 +83,9 @@
     	<string name="dlg_register_main_stores">店舗</string>
     	<string name="dlg_register_main_genres">ジャンル</string>
     	
+    	
+    <!-- itemlist.xml -->
+    	<string name="itemlist_bt_choose">確定</string>
+    	<string name="itemlist_bt_see_chosen">見る</string>
+    	
 </resources>

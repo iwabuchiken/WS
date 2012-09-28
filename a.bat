@@ -16,8 +16,8 @@ REM *********************
 ECHO Setting a var: SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
 SET SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
 
-ECHO Setting a var: JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_32\jre_7u7_32
-SET JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_32\jre_7u7_32
+ECHO Setting a var: JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
+SET JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
 
 ECHO Setting a var: GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
 SET GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
@@ -61,4 +61,22 @@ PATH=%PATH%;%GIT_CMD%;
 ECHO Modifying path: %%PATH%%;%NBP_NEW%;
 PATH=%PATH%;%NBP_NEW%;
 
+ECHO Setting a var: C:\WORKS\PROGRAMS\Java_7u7_i586\bin
+SET JAVA_HOME_BIN=C:\WORKS\PROGRAMS\Java_7u7_i586\bin
+ECHO Modifying path: %%PATH%%;%JAVA_HOME_BIN%;
+PATH=%PATH%;%JAVA_HOME_BIN%;
 
+
+REM *********************
+REM *
+REM *	Commands
+REM *
+REM *********************
+ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
+
+
+REM *********************
+REM *
+REM *	End
+REM *
+REM *********************

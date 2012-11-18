@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menu_listitem_filter" android:icon="@drawable/menu_listitem_filter_30x30_v3" android:title="@string/menu_listitem_filter"></item>
+    
+
+</menu>

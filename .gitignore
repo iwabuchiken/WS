@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .git
 .git/*
 ADMIN_USB_1
@@ -17,4 +18,30 @@ Camera//*
 Camera/
 Camera/*
 WORKSPACE_PIC/
+WORKSPACE_PIC/*
+=======
+*.class
+*.cache
+*.apk
+*.ap_
+*.dex
+*.*.class
+>>>>>>> 275b05f9dbdcc6c3dc614b2c27615f8498cf0c75
+Aptana3
+Aptana3/*
+bin
+bin/*
+Camera
+Camera/*
+gen
+gen/*
+libs
+libs/*
+Rails
+Rails/*
+res
+res/*
+src
+src/*
+WORKSPACE_PIC
 WORKSPACE_PIC/*

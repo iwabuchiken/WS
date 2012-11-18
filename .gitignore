@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .git
 .git/*
 ADMIN_USB_1
@@ -26,7 +25,6 @@ WORKSPACE_PIC/*
 *.ap_
 *.dex
 *.*.class
->>>>>>> 275b05f9dbdcc6c3dc614b2c27615f8498cf0c75
 Aptana3
 Aptana3/*
 bin
@@ -44,4 +42,24 @@ res/*
 src
 src/*
 WORKSPACE_PIC
+WORKSPACE_PIC/*
+.git
+.git/*
+ADMIN_USB_1
+ADMIN_USB_1/*
+G_nbp_new
+G_nbp_new/*
+TEMPLATES
+TEMPLATES/*
+WS_Android
+WS_Android/*
+WS_Android~
+WS_Android~/*
+WS_General
+WS_General/*
+Camera//
+Camera//*
+Camera/
+Camera/*
+WORKSPACE_PIC/
 WORKSPACE_PIC/*

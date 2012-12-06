@@ -71,10 +71,10 @@ SET SQLITE3_HOME=C:\WORKS\PROGRAMS\sqlite3
 ECHO Modifying path: %%PATH%%;%SQLITE3_HOME%;
 PATH=%PATH%;%SQLITE3_HOME%;
 
-ECHO Setting a var: C:\WORKS\PROGRAMS\RailsInstaller\Ruby1.9.3\bin
+ECHO Setting a var: RUBY_HOME_BIN=C:\WORKS\PROGRAMS\RailsInstaller\Ruby1.9.3\bin
 SET RUBY_HOME_BIN=C:\WORKS\PROGRAMS\RailsInstaller\Ruby1.9.3\bin
-ECHO Modifying path: %%PATH%%;%RUBY_HOME_BIN%;
-PATH=%PATH%;%RUBY_HOME_BIN%;
+ECHO Modifying path: %RUBY_HOME_BIN%;%%PATH%%;
+PATH=%RUBY_HOME_BIN%;%PATH%;
 
 REM *********************
 REM *

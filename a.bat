@@ -76,6 +76,18 @@ SET RUBY_HOME_BIN=C:\WORKS\PROGRAMS\RailsInstaller\Ruby1.9.3\bin
 ECHO Modifying path: %RUBY_HOME_BIN%;%%PATH%%;
 PATH=%RUBY_HOME_BIN%;%PATH%;
 
+ECHO Setting a var: MINGW_BIN=C:\WORKS\PROGRAMS\MinGW\bin
+SET MINGW_BIN=C:\WORKS\PROGRAMS\MinGW\bin
+ECHO Modifying path: %MINGW_BIN%;%%PATH%%;
+PATH=%MINGW_BIN%;%PATH%;
+
+ECHO Setting a var: VC2008_BIN=C:\Program Files\Microsoft Visual Studio 9.0\VC\bin
+SET VC2008_BIN=C:\Program Files\Microsoft Visual Studio 9.0\VC\bin
+ECHO Modifying path: %VC2008_BIN%;%%PATH%%;
+PATH=%VC2008_BIN%;%PATH%;
+
+ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
+
 REM *********************
 REM *
 REM *	Commands

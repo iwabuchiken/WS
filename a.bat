@@ -86,6 +86,11 @@ SET VC2008_BIN=C:\Program Files\Microsoft Visual Studio 9.0\VC\bin
 ECHO Modifying path: %VC2008_BIN%;%%PATH%%;
 PATH=%VC2008_BIN%;%PATH%;
 
+ECHO Setting a var: SUBVERSION_BIN=C:\WORKS\PROGRAMS\Subversion_Client
+SET SUBVERSION_BIN=C:\WORKS\PROGRAMS\Subversion_Client
+ECHO Modifying path: %SUBVERSION_BIN%;%%PATH%%;
+PATH=%SUBVERSION_BIN%;%PATH%;
+
 ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
 
 REM *********************

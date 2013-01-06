@@ -91,6 +91,23 @@ SET SUBVERSION_BIN=C:\WORKS\PROGRAMS\Subversion_Client
 ECHO Modifying path: %SUBVERSION_BIN%;%%PATH%%;
 PATH=%SUBVERSION_BIN%;%PATH%;
 
+ECHO Setting a var: FFMPEG_BIN=C:\WORKS\PROGRAMS\ffmpeg-r16537-gpl-static-win32\bin
+SET FFMPEG_BIN=C:\WORKS\PROGRAMS\ffmpeg-r16537-gpl-static-win32\bin
+ECHO Modifying path: %FFMPEG_BIN%;%%PATH%%;
+PATH=%FFMPEG_BIN%;%PATH%;
+
+ECHO Setting a var: MP4BOX_BIN=C:\WORKS\PROGRAMS\GPAC
+SET MP4BOX_BIN=C:\WORKS\PROGRAMS\GPAC
+ECHO Modifying path: %MP4BOX_BIN%;%%PATH%%;
+PATH=%MP4BOX_BIN%;%PATH%;
+
+ECHO Setting a var: MECAB_BIN=C:\WORKS\PROGRAMS\MeCab\bin
+SET MECAB_BIN=C:\WORKS\PROGRAMS\MeCab\bin
+ECHO Modifying path: %MECAB_BIN%;%%PATH%%;
+PATH=%MECAB_BIN%;%PATH%;
+
+
+
 ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
 
 REM *********************

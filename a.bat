@@ -106,18 +106,32 @@ SET MECAB_BIN=C:\WORKS\PROGRAMS\MeCab\bin
 ECHO Modifying path: %MECAB_BIN%;%%PATH%%;
 PATH=%MECAB_BIN%;%PATH%;
 
+ECHO Setting a var: QT_BIN=C:\WORKS\PROGRAMS\Qt\Qt5.0.0\5.0.0\msvc2010\bin
+SET QT_BIN=C:\WORKS\PROGRAMS\Qt\Qt5.0.0\5.0.0\msvc2010\bin
+ECHO Modifying path: %QT_BIN%;%%PATH%%;
+PATH=%QT_BIN%;%PATH%;
 
+ECHO Setting a var: MAVEN_BIN=C:\WORKS\PROGRAMS\apache-maven-3.0.4\bin
+SET MAVEN_BIN=C:\WORKS\PROGRAMS\apache-maven-3.0.4\bin
+ECHO Modifying path: %MAVEN_BIN%;%%PATH%%;
+PATH=%MAVEN_BIN%;%PATH%;
 
-ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
+ECHO Setting a var: ANT_BIN=C:\WORKS\PROGRAMS\apache-ant-1.8.4\bin
+SET ANT_BIN=C:\WORKS\PROGRAMS\apache-ant-1.8.4\bin
+ECHO Modifying path: %ANT_BIN%;%%PATH%%;
+PATH=%ANT_BIN%;%PATH%;
+
 
 REM *********************
 REM *
 REM *	Commands
 REM *
 REM *********************
+ECHO.
 ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
-
 ECHO cd C:\WORKS\WS\Rails
+ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
+ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
 
 REM *********************
 REM *

@@ -121,6 +121,11 @@ SET ANT_BIN=C:\WORKS\PROGRAMS\apache-ant-1.8.4\bin
 ECHO Modifying path: %ANT_BIN%;%%PATH%%;
 PATH=%ANT_BIN%;%PATH%;
 
+ECHO Setting a var: FM_HOME=C:\WORKS\WS\WS_Android~\FM
+SET FM_HOME=C:\WORKS\WS\WS_Android~\FM
+ECHO Modifying path: %FM_HOME%;%%PATH%%;
+PATH=%FM_HOME%;%PATH%;
+
 
 REM *********************
 REM *
@@ -132,6 +137,7 @@ ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
 ECHO cd C:\WORKS\WS\Rails
 ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
+ECHO pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
 
 REM *********************
 REM *

@@ -1,9 +1,52 @@
 @ECHO OFF
+
+REM ************************************
+REM *
+REM *	Options
+REM *
+REM ************************************
+if "%1"=="-h" (
+	call :help
+	goto :end
+	
+) else if "%1"=="fm" (
+	echo Calling fm
+	call :fm
+
+	goto :end
+
+) else if "%1"=="fm2" (
+	echo Calling fm2
+	call :fm2
+
+	goto :end
+
+) else if "%1"=="b" (
+	ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
+	ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
+	call :basic
+	goto :end
+
+) else if "%1"=="book" (
+	call :book
+	goto :end
+
+) else if "%1"=="admin" (
+	call :admin
+	goto :end
+
+
+)
+
+
 REM ************************************
 REM *
 REM *	Set vars
 REM *
 REM ************************************
+
+
+
 
 REM *********************
 REM *	1. Git
@@ -34,6 +77,11 @@ ECHO Setting a var: ADB_HOME=C:\WORKS\PROGRAMS\Android\android-sdk\platform-tool
 SET ADB_HOME=C:\WORKS\PROGRAMS\Android\android-sdk\platform-tools
 ECHO Modifying path: %%PATH%%;%ADB_HOME%;
 PATH=%PATH%;%ADB_HOME%;
+
+ECHO Setting a var: WS_HOME=C:\WORKS\WS
+SET WS_HOME=C:\WORKS\WS
+ECHO Modifying path: %%PATH%%;%WS_HOME%;
+PATH=%PATH%;%WS_HOME%;
 
 REM ************************************
 REM *
@@ -137,10 +185,92 @@ ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
 ECHO cd C:\WORKS\WS\Rails
 ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
-ECHO pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
+REM ECHO pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
+
+goto :end
+
+REM ************************************
+REM *
+REM *	Functions: show_fm
+REM *
+REM ************************************
+:fm
+	echo pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
+	echo g p origin master
+	echo g pull git^@github.com:iwabuchiken/FM.git
+	echo g c -a -m "W"
+	echo g c -a -m "W" ^&^& g p origin master
+	goto :end
+
+REM ************************************
+REM *
+REM *	Functions: fm2
+REM *
+REM ************************************
+:fm2
+	echo pushd C:\WORKS\WS\WS_Android~\FM
+	pushd C:\WORKS\WS\WS_Android~\FM
+REM 	echo g a .
+REM 	echo g a C:\WORKS\WS\WS_Android~\FM
+REM 	g a C:\WORKS\WS\WS_Android~\FM
+	echo g c -a -m "W"
+REM 	g c -a -m "W"
+	echo g p origin master
+REM 	g p origin master
+	goto :end
+
+REM ************************************
+REM *
+REM *	Functions: show_help
+REM *
+REM ************************************
+:help
+	echo ^<Syntax^>
+	echo 	a [Option]
+	echo ^<Options^>
+	echo 	admin	Show ADMIN-related commands
+	echo 	b		Show basic commands
+	echo 	book	Execute bookmarks-related operations
+
+	echo 	fm		Show FM-related commands
+	goto :end
+REM ************************************
+REM *
+REM *	Functions: show basic commands
+REM *
+REM ************************************
+:basic
+	ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
+	ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
+	
+	
+	goto :end
+
+REM ************************************
+REM *
+REM *	Functions: show basic commands
+REM *
+REM ************************************
+:book
+	echo pushd C:\WORKS\WS\ADMIN_USB_1\bookmarks
+	echo git add .
+	echo g c -m "W"
+	echo g p origin master
+	
+	goto :end
+
+:admin
+	echo pushd C:\WORKS\WS\ADMIN_USB_1 ^& gitk
+	echo g p origin master
+	echo g pull git@github.com:iwabuchiken/ADMIN_USB_1.git
+	echo g c -a -m "W"
+	echo g c -a -m "W" ^&^& g p origin master
+	goto :end
 
 REM *********************
 REM *
 REM *	End
 REM *
 REM *********************
+:end
+rem exit 0

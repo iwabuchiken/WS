@@ -35,6 +35,9 @@ if "%1"=="-h" (
 	call :admin
 	goto :end
 
+) else if "%1"=="muse" (
+	call :muse
+	goto :end
 
 )
 
@@ -233,6 +236,7 @@ REM ************************************
 	echo 	book	Execute bookmarks-related operations
 
 	echo 	fm		Show FM-related commands
+	echo 	muse	Show MuseScore-related commands
 	goto :end
 REM ************************************
 REM *
@@ -263,6 +267,14 @@ REM ************************************
 	echo pushd C:\WORKS\WS\ADMIN_USB_1 ^& gitk
 	echo g p origin master
 	echo g pull git@github.com:iwabuchiken/ADMIN_USB_1.git
+	echo g c -a -m "W"
+	echo g c -a -m "W" ^&^& g p origin master
+	goto :end
+
+:muse
+	echo pushd C:\WORKS\WS\WS_Android\musescore ^& gitk
+	echo g p origin master
+	echo g pull git@github.com:iwabuchiken/musescore.git
 	echo g c -a -m "W"
 	echo g c -a -m "W" ^&^& g p origin master
 	goto :end

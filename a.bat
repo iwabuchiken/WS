@@ -277,6 +277,7 @@ REM ************************************
 	echo g pull git@github.com:iwabuchiken/musescore.git
 	echo g c -a -m "W"
 	echo g c -a -m "W" ^&^& g p origin master
+	echo C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe
 	goto :end
 
 REM *********************

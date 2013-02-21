@@ -39,6 +39,9 @@ if "%1"=="-h" (
 	call :muse
 	goto :end
 
+) else if "%1"=="time" (
+	call :time
+	goto :end
 )
 
 
@@ -278,6 +281,13 @@ REM ************************************
 	echo g c -a -m "W"
 	echo g c -a -m "W" ^&^& g p origin master
 	echo C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe
+	goto :end
+
+:time
+	echo pushd C:\WORKS\WS\WS_Android\Time_calculator
+REM 	pushd C:\WORKS\WS\WS_Android\Time_calculator
+	echo makejar.bat p1 E_5_multiple_sources.java
+REM 	makejar.bat p1 E_5_multiple_sources.java
 	goto :end
 
 REM *********************

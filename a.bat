@@ -42,6 +42,15 @@ if "%1"=="-h" (
 ) else if "%1"=="time" (
 	call :time
 	goto :end
+
+) else if "%1"=="and" (
+	call :and
+	goto :end
+
+) else (
+	echo Option: %1 --^> Unknown option
+	call :help
+	goto :end
 )
 
 
@@ -234,12 +243,16 @@ REM ************************************
 	echo ^<Syntax^>
 	echo 	a [Option]
 	echo ^<Options^>
+	echo 	-h	Show help (this)
 	echo 	admin	Show ADMIN-related commands
-	echo 	b		Show basic commands
+	echo 	and	Show Android-related commands
+	echo 	b	Show basic commands
 	echo 	book	Execute bookmarks-related operations
 
-	echo 	fm		Show FM-related commands
+	echo 	fm	Show FM-related commands
 	echo 	muse	Show MuseScore-related commands
+	echo 	time	Show TimeCalculater-related commands
+	
 	goto :end
 REM ************************************
 REM *
@@ -290,6 +303,9 @@ REM 	pushd C:\WORKS\WS\WS_Android\Time_calculator
 REM 	makejar.bat p1 E_5_multiple_sources.java
 	goto :end
 
+:and
+	echo adb devices
+	goto :end
 REM *********************
 REM *
 REM *	End

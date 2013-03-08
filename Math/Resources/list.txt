@@ -1,0 +1,2 @@
+1	integassum.pdf	http://www.mathtutor.ac.uk/integration/integrationassummation/text
+2	head.pdf	http://math.boisestate.edu/~holmes/holmes/head.pdf

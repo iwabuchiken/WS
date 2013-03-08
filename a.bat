@@ -22,8 +22,7 @@ if "%1"=="-h" (
 	goto :end
 
 ) else if "%1"=="b" (
-	ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
-	ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
+
 	call :basic
 	goto :end
 
@@ -46,6 +45,10 @@ if "%1"=="-h" (
 ) else if "%1"=="and" (
 	call :and
 	goto :end
+
+) else if "%1"=="" (
+	goto :set_path
+REM 	goto :end
 
 ) else (
 	echo Option: %1 --^> Unknown option
@@ -71,6 +74,7 @@ REM *	4. Java
 REM *	5. Sakura
 REM *	
 REM *********************
+:set_path
 ECHO Setting a var: SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
 SET SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
 
@@ -200,6 +204,7 @@ ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
 ECHO cd C:\WORKS\WS\Rails
 ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
+ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe
 REM ECHO pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
 
 goto :end
@@ -262,7 +267,7 @@ REM ************************************
 :basic
 	ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
 	ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
-	
+	ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe	
 	
 	goto :end
 
@@ -288,6 +293,7 @@ REM ************************************
 	goto :end
 
 :muse
+	echo C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe
 	echo pushd C:\WORKS\WS\WS_Android\musescore ^& gitk
 	echo g p origin master
 	echo g pull git@github.com:iwabuchiken/musescore.git

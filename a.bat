@@ -200,11 +200,15 @@ REM *	Commands
 REM *
 REM *********************
 ECHO.
-ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
+ECHO start C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
+start C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
 ECHO cd C:\WORKS\WS\Rails
-ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
+ECHO start C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
+start C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
 ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe
+ECHO start C:\WORKS\PROGRAMS\eclipse\eclipse.exe
+start C:\WORKS\PROGRAMS\eclipse\eclipse.exe
 REM ECHO pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
 
 goto :end

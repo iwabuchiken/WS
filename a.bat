@@ -46,6 +46,10 @@ if "%1"=="-h" (
 	call :and
 	goto :end
 
+) else if "%1"=="and" (
+	call :and
+	goto :end
+
 ) else if "%1"=="" (
 	goto :set_path
 REM 	goto :end
@@ -210,6 +214,10 @@ ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe
 ECHO start C:\WORKS\PROGRAMS\eclipse\eclipse.exe
 start C:\WORKS\PROGRAMS\eclipse\eclipse.exe
 REM ECHO pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
+ECHO start C:\WORKS
+start C:\WORKS
+ECHO start C:\Users\IwabuchiKen\AppData\Local\Google\Chrome\Application\chrome.exe
+start C:\Users\IwabuchiKen\AppData\Local\Google\Chrome\Application\chrome.exe
 
 goto :end
 
@@ -224,6 +232,7 @@ REM ************************************
 	echo g pull git^@github.com:iwabuchiken/FM.git
 	echo g c -a -m "W"
 	echo g c -a -m "W" ^&^& g p origin master
+	echo pushd C:\WORKS\WS\WS_Android~\FM && g c -a -m "W" ^&^& g p origin master
 	goto :end
 
 REM ************************************
@@ -272,7 +281,7 @@ REM ************************************
 	ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
 	ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 	ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe	
-	
+	ECHO C:\Users\IwabuchiKen\AppData\Local\Google\Chrome\Application\chrome.exe
 	goto :end
 
 REM ************************************

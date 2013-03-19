@@ -236,7 +236,7 @@ REM ************************************
 	echo g pull git^@github.com:iwabuchiken/FM.git
 	echo g c -a -m "W"
 	echo g c -a -m "W" ^&^& g p origin master
-	echo pushd C:\WORKS\WS\WS_Android~\FM && g c -a -m "W" ^&^& g p origin master
+	echo pushd C:\WORKS\WS\WS_Android~\FM ^&^& g c -a -m "W" ^&^& g p origin master
 	goto :end
 
 REM ************************************

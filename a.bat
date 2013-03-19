@@ -50,6 +50,10 @@ if "%1"=="-h" (
 	call :and
 	goto :end
 
+) else if "%1"=="path" (
+	call :path_only
+	goto :end
+
 ) else if "%1"=="" (
 	goto :set_path
 REM 	goto :end
@@ -269,6 +273,7 @@ REM ************************************
 
 	echo 	fm	Show FM-related commands
 	echo 	muse	Show MuseScore-related commands
+	echo 	path	Set paths only (No apps started)
 	echo 	time	Show TimeCalculater-related commands
 	
 	goto :end
@@ -324,6 +329,114 @@ REM 	makejar.bat p1 E_5_multiple_sources.java
 
 :and
 	echo adb devices
+	goto :end
+	
+:path_only
+ECHO Setting a var: SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
+SET SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
+
+ECHO Setting a var: JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
+SET JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
+
+ECHO Setting a var: GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
+SET GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
+
+ECHO Setting a var: NBP_NEW=C:\WORKS\WS\G_nbp_new
+SET NBP_NEW=C:\WORKS\WS\G_nbp_new
+
+ECHO Setting a var: PYTHON_HOME=C:\WORKS\PROGRAMS\Python27
+SET PYTHON_HOME=C:\WORKS\PROGRAMS\Python27
+ECHO Modifying path: %%PATH%%;%PYTHON_HOME%;
+PATH=%PATH%;%PYTHON_HOME%;
+
+ECHO Setting a var: ADB_HOME=C:\WORKS\PROGRAMS\Android\android-sdk\platform-tools
+SET ADB_HOME=C:\WORKS\PROGRAMS\Android\android-sdk\platform-tools
+ECHO Modifying path: %%PATH%%;%ADB_HOME%;
+PATH=%PATH%;%ADB_HOME%;
+
+ECHO Setting a var: WS_HOME=C:\WORKS\WS
+SET WS_HOME=C:\WORKS\WS
+ECHO Modifying path: %%PATH%%;%WS_HOME%;
+PATH=%PATH%;%WS_HOME%;
+
+ECHO Modifying path: %%PATH%%;%SAKURA_HOME%;
+PATH=%PATH%;%SAKURA_HOME%;
+
+ECHO Modifying path: %%PATH%%;%JAVA_HOME%;
+PATH=%PATH%;%JAVA_HOME%;
+
+ECHO Modifying path: %%PATH%%;%GIT_CMD%;
+PATH=%PATH%;%GIT_CMD%;
+
+ECHO Modifying path: %%PATH%%;%NBP_NEW%;
+PATH=%PATH%;%NBP_NEW%;
+
+ECHO Setting a var: C:\WORKS\PROGRAMS\Java_7u7_i586\bin
+SET JAVA_HOME_BIN=C:\WORKS\PROGRAMS\Java_7u7_i586\bin
+ECHO Modifying path: %%PATH%%;%JAVA_HOME_BIN%;
+PATH=%PATH%;%JAVA_HOME_BIN%;
+
+ECHO Setting a var: C:\WORKS\PROGRAMS\sqlite3
+SET SQLITE3_HOME=C:\WORKS\PROGRAMS\sqlite3
+ECHO Modifying path: %%PATH%%;%SQLITE3_HOME%;
+PATH=%PATH%;%SQLITE3_HOME%;
+
+ECHO Setting a var: RUBY_HOME_BIN=C:\WORKS\PROGRAMS\RailsInstaller\Ruby1.9.3\bin
+SET RUBY_HOME_BIN=C:\WORKS\PROGRAMS\RailsInstaller\Ruby1.9.3\bin
+ECHO Modifying path: %RUBY_HOME_BIN%;%%PATH%%;
+PATH=%RUBY_HOME_BIN%;%PATH%;
+
+ECHO Setting a var: MINGW_BIN=C:\WORKS\PROGRAMS\MinGW\bin
+SET MINGW_BIN=C:\WORKS\PROGRAMS\MinGW\bin
+ECHO Modifying path: %MINGW_BIN%;%%PATH%%;
+PATH=%MINGW_BIN%;%PATH%;
+
+ECHO Setting a var: VC2008_BIN=C:\Program Files\Microsoft Visual Studio 9.0\VC\bin
+SET VC2008_BIN=C:\Program Files\Microsoft Visual Studio 9.0\VC\bin
+ECHO Modifying path: %VC2008_BIN%;%%PATH%%;
+PATH=%VC2008_BIN%;%PATH%;
+
+ECHO Setting a var: SUBVERSION_BIN=C:\WORKS\PROGRAMS\Subversion_Client
+SET SUBVERSION_BIN=C:\WORKS\PROGRAMS\Subversion_Client
+ECHO Modifying path: %SUBVERSION_BIN%;%%PATH%%;
+PATH=%SUBVERSION_BIN%;%PATH%;
+
+ECHO Setting a var: FFMPEG_BIN=C:\WORKS\PROGRAMS\ffmpeg-r16537-gpl-static-win32\bin
+SET FFMPEG_BIN=C:\WORKS\PROGRAMS\ffmpeg-r16537-gpl-static-win32\bin
+ECHO Modifying path: %FFMPEG_BIN%;%%PATH%%;
+PATH=%FFMPEG_BIN%;%PATH%;
+
+ECHO Setting a var: MP4BOX_BIN=C:\WORKS\PROGRAMS\GPAC
+SET MP4BOX_BIN=C:\WORKS\PROGRAMS\GPAC
+ECHO Modifying path: %MP4BOX_BIN%;%%PATH%%;
+PATH=%MP4BOX_BIN%;%PATH%;
+
+ECHO Setting a var: MECAB_BIN=C:\WORKS\PROGRAMS\MeCab\bin
+SET MECAB_BIN=C:\WORKS\PROGRAMS\MeCab\bin
+ECHO Modifying path: %MECAB_BIN%;%%PATH%%;
+PATH=%MECAB_BIN%;%PATH%;
+
+ECHO Setting a var: QT_BIN=C:\WORKS\PROGRAMS\Qt\Qt5.0.0\5.0.0\msvc2010\bin
+SET QT_BIN=C:\WORKS\PROGRAMS\Qt\Qt5.0.0\5.0.0\msvc2010\bin
+ECHO Modifying path: %QT_BIN%;%%PATH%%;
+PATH=%QT_BIN%;%PATH%;
+
+ECHO Setting a var: MAVEN_BIN=C:\WORKS\PROGRAMS\apache-maven-3.0.4\bin
+SET MAVEN_BIN=C:\WORKS\PROGRAMS\apache-maven-3.0.4\bin
+ECHO Modifying path: %MAVEN_BIN%;%%PATH%%;
+PATH=%MAVEN_BIN%;%PATH%;
+
+ECHO Setting a var: ANT_BIN=C:\WORKS\PROGRAMS\apache-ant-1.8.4\bin
+SET ANT_BIN=C:\WORKS\PROGRAMS\apache-ant-1.8.4\bin
+ECHO Modifying path: %ANT_BIN%;%%PATH%%;
+PATH=%ANT_BIN%;%PATH%;
+
+ECHO Setting a var: FM_HOME=C:\WORKS\WS\WS_Android~\FM
+SET FM_HOME=C:\WORKS\WS\WS_Android~\FM
+ECHO Modifying path: %FM_HOME%;%%PATH%%;
+PATH=%FM_HOME%;%PATH%;
+
+
 	goto :end
 REM *********************
 REM *

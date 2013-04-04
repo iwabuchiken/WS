@@ -54,6 +54,10 @@ if "%1"=="-h" (
 	call :path_only
 	goto :end
 
+) else if "%1"=="p" (
+	call :path_only
+	goto :end
+
 ) else if "%1"=="" (
 	goto :set_path
 REM 	goto :end
@@ -273,6 +277,7 @@ REM ************************************
 
 	echo 	fm	Show FM-related commands
 	echo 	muse	Show MuseScore-related commands
+	echo 	p
 	echo 	path	Set paths only (No apps started)
 	echo 	time	Show TimeCalculater-related commands
 	

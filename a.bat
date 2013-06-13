@@ -21,6 +21,12 @@ if "%1"=="-h" (
 
 	goto :end
 
+) else if "%1"=="fm3" (
+	echo Calling fm3
+	call :fm3
+
+	goto :end
+
 ) else if "%1"=="b" (
 
 	call :basic
@@ -61,6 +67,9 @@ if "%1"=="-h" (
 ) else if "%1"=="" (
 	goto :set_path
 REM 	goto :end
+
+) else if "%1"=="ard" (
+	goto :ard
 
 ) else (
 	echo Option: %1 --^> Unknown option
@@ -219,8 +228,8 @@ ECHO start C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.ja
 start C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 ECHO C:"\Program Files"\"Microsoft Visual Studio 9.0"\VC\bin\vcvars32.bat
 ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe
-ECHO start C:\WORKS\PROGRAMS\eclipse\eclipse.exe
-start C:\WORKS\PROGRAMS\eclipse\eclipse.exe
+ECHO start C:\WORKS\PROGRAMS\eclipse_3-7\eclipse.exe
+start C:\WORKS\PROGRAMS\eclipse_3-7\eclipse.exe
 REM ECHO pushd C:\WORKS\WS\WS_Android~\FM ^& gitk
 ECHO start C:\WORKS
 start C:\WORKS
@@ -260,6 +269,11 @@ REM 	g c -a -m "W"
 REM 	g p origin master
 	goto :end
 
+:fm3
+	echo pushd C:\WORKS\WS\WS_Android~\FM ^&^& g c -a -m "W" ^&^& g p origin master
+	pushd C:\WORKS\WS\WS_Android~\FM && g c -a -m "W" && g p origin master
+	
+	goto :end
 REM ************************************
 REM *
 REM *	Functions: show_help
@@ -272,6 +286,7 @@ REM ************************************
 	echo 	-h	Show help (this)
 	echo 	admin	Show ADMIN-related commands
 	echo 	and	Show Android-related commands
+	echo 	ard	Show Arduino-related commands
 	echo 	b	Show basic commands
 	echo 	book	Execute bookmarks-related operations
 
@@ -292,6 +307,10 @@ REM ************************************
 	ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 	ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe	
 	ECHO C:\Users\IwabuchiKen\AppData\Local\Google\Chrome\Application\chrome.exe
+	ECHO C:\WORKS\PROGRAMS\processing-2.0b8\processing.exe
+	ECHO C:\WORKS\PROGRAMS\arduino-1.0.4\arduino.exe
+	ECHO C:\WORKS\PROGRAMS\eclipse_3-7\eclipse.exe
+	ECHO C:\WORKS\PROGRAMS\pleiades-e3.6-ultimate_20110326\eclipse\eclipse.exe
 	goto :end
 
 REM ************************************
@@ -334,6 +353,14 @@ REM 	makejar.bat p1 E_5_multiple_sources.java
 
 :and
 	echo adb devices
+	goto :end
+
+:ard
+	echo pushd C:\WORKS\WS\Arduino
+	echo gitk
+	echo.
+	echo C:\WORKS\PROGRAMS\arduino-1.0.4\arduino.exe
+	
 	goto :end
 	
 :path_only
@@ -440,6 +467,11 @@ ECHO Setting a var: FM_HOME=C:\WORKS\WS\WS_Android~\FM
 SET FM_HOME=C:\WORKS\WS\WS_Android~\FM
 ECHO Modifying path: %FM_HOME%;%%PATH%%;
 PATH=%FM_HOME%;%PATH%;
+
+ECHO Setting a var: MYSQL_HOME_BIN=C:\WORKS\PROGRAMS\xampp\mysql\bin
+SET MYSQL_HOME_BIN=C:\WORKS\PROGRAMS\xampp\mysql\bin
+ECHO Modifying path: %MYSQL_HOME_BIN%;%%PATH%%;
+PATH=%MYSQL_HOME_BIN%;%PATH%;
 
 
 	goto :end

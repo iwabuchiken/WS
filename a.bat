@@ -102,8 +102,8 @@ SET SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
 ECHO Setting a var: JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
 SET JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
 
-ECHO Setting a var: GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
-SET GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
+ECHO Setting a var: GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full_1.7.11\Git\cmd
+SET GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full_1.7.11\Git\cmd
 
 ECHO Setting a var: NBP_NEW=C:\WORKS\WS\G_nbp_new
 SET NBP_NEW=C:\WORKS\WS\G_nbp_new
@@ -370,8 +370,8 @@ SET SAKURA_HOME=C:\WORKS\PROGRAMS\sakura_x86
 ECHO Setting a var: JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
 SET JAVA_HOME=C:\WORKS\PROGRAMS\Java_7u7_i586
 
-ECHO Setting a var: GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
-SET GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full\msysgit\cmd
+ECHO Setting a var: GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full_1.7.11\Git\cmd
+SET GIT_CMD=C:\WORKS\PROGRAMS\msysgit_full_1.7.11\Git\cmd
 
 ECHO Setting a var: NBP_NEW=C:\WORKS\WS\G_nbp_new
 SET NBP_NEW=C:\WORKS\WS\G_nbp_new

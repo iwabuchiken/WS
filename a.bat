@@ -305,6 +305,7 @@ REM ************************************
 :basic
 	ECHO C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe
 	ECHO C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
+	ECHO java -jar C:\WORKS\WS\WS_Android\Time_calculator\bin\p1_E_5_multiple_sources.jar
 	ECHO C:\WORKS\PROGRAMS\MuseScore\bin\mscore.exe	
 	ECHO C:\Users\IwabuchiKen\AppData\Local\Google\Chrome\Application\chrome.exe
 	ECHO C:\WORKS\PROGRAMS\processing-2.0b8\processing.exe

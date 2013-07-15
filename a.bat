@@ -270,8 +270,8 @@ REM 	g p origin master
 	goto :end
 
 :fm3
-	echo pushd C:\WORKS\WS\WS_Android~\FM ^&^& g c -a -m "W" ^&^& g p origin master
-	pushd C:\WORKS\WS\WS_Android~\FM && g c -a -m "W" && g p origin master
+	echo pushd C:\WORKS\WS\WS_Android~\FM ^&^& g a . ^&^& g c -a -m "W" ^&^& g p origin master
+	pushd C:\WORKS\WS\WS_Android~\FM && g a . && g c -a -m "W" && g p origin master
 	
 	goto :end
 REM ************************************
@@ -354,6 +354,8 @@ REM 	makejar.bat p1 E_5_multiple_sources.java
 
 :and
 	echo adb devices
+	echo adb start-server
+	echo adb kill-server
 	goto :end
 
 :ard
